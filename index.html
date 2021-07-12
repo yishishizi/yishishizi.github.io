@@ -163,88 +163,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-我的博客搭建历程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/">我的博客搭建历程</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-07-10T08:53:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>主要记录用hexo搭建博客时遇到的一些问题以及解决的措施。此外，还有视频教程的链接。</p>
-        
-          <a class="article-more-a" href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">主页</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-将本地代码上传到github上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -266,50 +184,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1、安装git客户端："><a href="#1、安装git客户端：" class="headerlink" title="1、安装git客户端："></a>1、安装git客户端：</h2><pre><code>1.1 下载git
-    官网：git-scm.com/download/
-    镜像：https://npm.taobao.org/mirrors/git-for-windows/?utm_source=qq&amp;utm_medium=social&amp;utm_oi=793691189428776960
-2.2 安装git
-2.3 绑定用户
-    git config --global user.name &quot;username&quot;
-    git config --global user.email &quot;useremail&quot;
-</code></pre>
-<h2 id="2、设置ssh密钥："><a href="#2、设置ssh密钥：" class="headerlink" title="2、设置ssh密钥："></a>2、设置ssh密钥：</h2><pre><code>2.1 生成ssh密钥
-    在git bash中输入ssh-keygen -t rsa -C &quot;useremail&quot;，一直按回车，不要输入yes。
-2.2 在C:\Users\user\.ssh路径下找到.pub结尾的文件，并用记事本打开，复制里面的内容.
-2.3 打开个人github界面，进入setting-SSH and GPG keys,点击new ssh key,title内容随意，key里面复制.pub文件的内容。
-2.4 在git中输入ssh -T git @github.com，看密钥配置是否成功。
-</code></pre>
-<h2 id="3、上传项目到github"><a href="#3、上传项目到github" class="headerlink" title="3、上传项目到github"></a>3、上传项目到github</h2><pre><code>3.1 在本地项目中右击鼠标，打开git bash。
-3.2 输入
-    git config --global user.name &quot;username&quot;
-    git config --global user.email &quot;useremail&quot;
-3.3 输入git init进行初始化
-3.4 输入git add .注意add后面有空格
-3.5 输入git commit -m &quot;first commit&quot;，对本次上传进行一下说明。
-3.6 输入git remote add origin git@github.com:547343578/xxx.git关联github仓库。github仓库地址一定要选择ssh。
-3.7 输入git push -u origin master上传本地代码
-注：若步骤3.7出错，查看github仓库里面是否有readme文件，如果有，需要先将readme文件拿下来，下载到本地仓库中。
-3.7.1 输入 git pull --rebase origin master
-若对代码进行了更新，需要再次重新上传的，先执行3.7.1，再执行3.7即可。
-master是默认的分支，如果上传到其他分支，需要改成对应的名字。
-</code></pre>
-<h2 id="4、创建仓库分支"><a href="#4、创建仓库分支" class="headerlink" title="4、创建仓库分支"></a>4、创建仓库分支</h2><pre><code>4.1 执行git branch test 创建一个test分支
-4.2 输入git checkout test 切换到test分支
-4.3 输入git add .
-4.4 输入git commit -m &quot;first commit&quot;，对本次上传进行一下说明。
-4.5 输入git remote add origin git@github.com:547343578/xxx.git关联github仓库。github仓库地址一定要选择ssh。
-4.6 输入git push -u origin master上传本地代码
-4.7 githu仓库主页上此时会显示compare&amp;pull request，点击进去点击create pull reques，点击merge pull request，点击confirm merge。
-</code></pre>
-<h2 id="5、删除项目中的多余分支"><a href="#5、删除项目中的多余分支" class="headerlink" title="5、删除项目中的多余分支"></a>5、删除项目中的多余分支</h2><pre><code>5.1 输入git push origin :test
-</code></pre>
-<h2 id="6、删除库"><a href="#6、删除库" class="headerlink" title="6、删除库"></a>6、删除库</h2><pre><code>进入要删除库中的setting，页面最后点击delete即可。
-</code></pre>
-<h2 id="参考教程："><a href="#参考教程：" class="headerlink" title="参考教程："></a>参考教程：</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV195411t7tA?from=search&seid=9459704741008066552">B站-【程序员一定要掌握的技巧】使用Git上传本地代码到GitHub教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eV411s73X?from=search&seid=9459704741008066552">B站-如何像程序员一样帅气地使用github？十分钟学会上传项目!</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fqlife/p/8493745.html">浮生.若梦博客</a></p>
-
+        <p>使用git将本地代码上传到github上</p>
+        
+          <a class="article-more-a" href="/2021/07/12/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A/#more">more >></a>
+        
       
 
       
@@ -410,6 +288,83 @@ master是默认的分支，如果上传到其他分支，需要改成对应的�
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/07/12/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-我的博客搭建历程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/">我的博客搭建历程</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2021-07-10T08:53:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主要记录用hexo搭建博客时遇到的一些问题以及解决的措施。此外，还有视频教程的链接。</p>
+        
+          <a class="article-more-a" href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">主页</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
