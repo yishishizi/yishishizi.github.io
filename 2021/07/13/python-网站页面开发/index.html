@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="https://yishishizi.github.io">
   <title>python 网站页面开发 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、web网站介绍网络系统软件开发包括两种结构：     (1)C&#x2F;S是客户机(client)&#x2F;服务器（server）(如：QQ、网络游戏、手游)     (2)B&#x2F;S是浏览器（browser)&#x2F;服务器。 B&#x2F;S最大的优点就是可以在任何地方进行操作而不用安装任何专门的软件 B&#x2F;S软件的优势与劣势:     维护和升级方式简单。      成本降低，选择更多。     应用服务器运行数据负荷较重">
+  <meta name="description" content="python开发网页界面的一些基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 网站页面开发">
 <meta property="og:url" content="https://yishishizi.github.io/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、web网站介绍网络系统软件开发包括两种结构：     (1)C&#x2F;S是客户机(client)&#x2F;服务器（server）(如：QQ、网络游戏、手游)     (2)B&#x2F;S是浏览器（browser)&#x2F;服务器。 B&#x2F;S最大的优点就是可以在任何地方进行操作而不用安装任何专门的软件 B&#x2F;S软件的优势与劣势:     维护和升级方式简单。      成本降低，选择更多。     应用服务器运行数据负荷较重">
+<meta property="og:description" content="python开发网页界面的一些基础知识">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://yishishizi.github.io/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/bb0e6cec.png">
-<meta property="og:image" content="https://yishishizi.github.io/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/fcc375e7.png">
-<meta property="og:image" content="https://yishishizi.github.io/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/adbb9178.png">
-<meta property="og:image" content="https://yishishizi.github.io/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/d453a2f4.png">
+<meta property="og:image" content="https://yishishizi.github.io/images//bb0e6cec.png">
+<meta property="og:image" content="https://yishishizi.github.io/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/fcc375e7.png">
+<meta property="og:image" content="https://yishishizi.github.io/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/adbb9178.png">
+<meta property="og:image" content="https://yishishizi.github.io/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/d453a2f4.png">
 <meta property="article:published_time" content="2021-07-13T03:07:42.000Z">
-<meta property="article:modified_time" content="2021-07-13T07:59:29.012Z">
+<meta property="article:modified_time" content="2021-07-13T09:06:52.060Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yishishizi.github.io/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/bb0e6cec.png">
+<meta name="twitter:image" content="https://yishishizi.github.io/images//bb0e6cec.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -201,8 +201,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
-
+        <p>python开发网页界面的一些基础知识</p>
+<span id="more"></span>
 <h2 id="1、web网站介绍"><a href="#1、web网站介绍" class="headerlink" title="1、web网站介绍"></a>1、web网站介绍</h2><pre><code>网络系统软件开发包括两种结构：
     (1)C/S是客户机(client)/服务器（server）(如：QQ、网络游戏、手游)
     (2)B/S是浏览器（browser)/服务器。
@@ -225,8 +225,8 @@ HTTP是一个客户端和服务器端请求和应答的标准（TCP）。客户�
 · 服务器端编程语言
 · 数据库管理系统
 </code></pre>
-<p><img src=".python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/bb0e6cec.png"></p>
-<p><img src=".python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/fcc375e7.png"></p>
+<p><img src="/images//bb0e6cec.png"></p>
+<p><img src="/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/fcc375e7.png"></p>
 <h2 id="4、HTML"><a href="#4、HTML" class="headerlink" title="4、HTML"></a>4、HTML</h2><pre><code>· HTML 指的是超文本标记语言 (Hyper Text Markup Language) 
 · HTML 不是一种编程语言，而是一种标记语言 (markup language) 
 · 标记语言是一套标记标签 (markup tag) 
@@ -246,8 +246,8 @@ HTML标签中还可以添加属性：
           &lt;标签名 属性名1=“值1” 属性名2=“值2” 属性名n=“值n”&gt;....&lt;/标签名&gt;
 HTML标签规范：标签名小写、属性使用双引号、标签要闭合。规范不遵守浏览器不会报错，会尽量解析，大不了不显示效果
 </code></pre>
-<p>   <img src=".python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/adbb9178.png"></p>
-<h2 id="5、HTML基本结构"><a href="#5、HTML基本结构" class="headerlink" title="5、HTML基本结构"></a>5、HTML基本结构</h2><p>   <img src=".python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/d453a2f4.png"></p>
+<p>   <img src="/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/adbb9178.png"></p>
+<h2 id="5、HTML基本结构"><a href="#5、HTML基本结构" class="headerlink" title="5、HTML基本结构"></a>5、HTML基本结构</h2><p>   <img src="/.python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91_images/d453a2f4.png"></p>
 <p>   HTML中head头部信息设置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">设置网页编码：    &lt;meta charset=&quot;utf-8&quot;/&gt;</span><br><span class="line">关键字:        	 &lt;meta name=&quot;Keywords&quot; content=&quot;关键字&quot; /&gt;</span><br><span class="line">描述:        	 &lt;meta name=&quot;Description&quot; content=&quot;简介、描述&quot; /&gt;</span><br><span class="line">网页标题:        &lt;title&gt;本网页标题&lt;/title&gt;</span><br><span class="line">导入CSS文件:     &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;**.css&quot;/&gt;</span><br><span class="line">CSS代码：    	 &lt;style type=&quot;text/css&quot;&gt;嵌入css样式代码&lt;/style&gt;</span><br><span class="line">JS文件或代码:	  &lt;script &gt;。。。&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="6、HTML常用标签介绍"><a href="#6、HTML常用标签介绍" class="headerlink" title="6、HTML常用标签介绍"></a>6、HTML常用标签介绍</h2><h3 id="文本标签"><a href="#文本标签" class="headerlink" title="文本标签"></a>文本标签</h3><pre><code>&lt;hn&gt;...&lt;/hn&gt;  其中n为1--6的值。 标题标签（加粗、独立行）
@@ -304,15 +304,15 @@ title：文字提示属性（详情）
 &lt;tbody&gt;...&lt;/tbody&gt;  表体
 &lt;tfoot&gt;...&lt;/tfoot&gt;  表尾
 </code></pre>
-<h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><pre><code>&lt;table&gt;...&lt;/table&gt;  表格标签: 属性：border、 width、 cellspacing、 cellpadding
-&lt;caption&gt;...&lt;/caption&gt; 表格标题
-&lt;tr&gt;...&lt;/tr&gt;  行标签
-&lt;th&gt;...&lt;/th&gt;  列头标签
-&lt;td&gt;...&lt;/td&gt;  列标签: 跨行属性：rowspan  跨列属性：colspan   
-
-&lt;thead&gt;...&lt;/thead&gt;  表头
-&lt;tbody&gt;...&lt;/tbody&gt;  表体
-&lt;tfoot&gt;...&lt;/tfoot&gt;  表尾
+<h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><pre><code>&lt;form&gt;...&lt;/form&gt;     表单标签 get：明文提交，显示账号密码，post：隐藏账号密码提交
+&lt;input /&gt;                表单项标签input定义输入字段，用户可在其中输入数据。
+&lt;select&gt;...&lt;/select&gt; 标签创建下拉列表。
+&lt;textarea&gt;...&lt;/textarea&gt; 多行的文本输入区域
+&lt;button&gt;...&lt;/button&gt;       标签定义按钮。
+&lt;fieldset&gt; --&lt;/fieldset&gt;     元素可将表单内的相关元素分组。
+&lt;legend&gt;&lt;/legend&gt;           标签为 &lt;fieldset&gt;、&lt;figure&gt; 以及 &lt;details&gt; 元素定义标题。
+&lt;datalist&gt; html5标签--&lt;datalist&gt;         标签定义可选数据的列表。
+&lt;optgroup&gt; html5标签--&lt;optgroup&gt; 标签定义选项组。
 </code></pre>
 <h3 id="行内框架标签"><a href="#行内框架标签" class="headerlink" title="行内框架标签"></a>行内框架标签</h3><pre><code>&lt;iframe&gt;...&lt;/iframe&gt; 行内框架
     属性：
