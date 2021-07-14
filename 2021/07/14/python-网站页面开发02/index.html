@@ -15,10 +15,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="CSS常用选择器、常用属性及网页布局介绍">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yishishizi.github.io/2021/07/14/images/081962a2f3d416a3beb78d3be2655a76474dd50b24141ed32f75a29527bc4a5b.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/d6c574eb83881bf6bd01dbe824324950c7725813b95857117335755622a0259f.png">
 <meta property="article:published_time" content="2021-07-14T01:40:22.000Z">
-<meta property="article:modified_time" content="2021-07-14T02:14:31.479Z">
+<meta property="article:modified_time" content="2021-07-14T13:58:30.868Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yishishizi.github.io/2021/07/14/images/081962a2f3d416a3beb78d3be2655a76474dd50b24141ed32f75a29527bc4a5b.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -199,13 +202,11 @@
         <p>CSS常用选择器、常用属性及网页布局介绍</p>
 <span id="more"></span>
 <h2 id="1、CSS常用选择器"><a href="#1、CSS常用选择器" class="headerlink" title="1、CSS常用选择器"></a>1、CSS常用选择器</h2><h3 id="常用兼容性选择器"><a href="#常用兼容性选择器" class="headerlink" title="常用兼容性选择器"></a>常用兼容性选择器</h3><pre><code>(1)html选择符（标签选择器）
-
 就是把html标签作为选择符使⽤
 如 p&#123;....&#125; ⽹⻚中所有p标签采⽤此样式
 h2&#123;....&#125; ⽹⻚中所有h2标签采⽤此样式
 
 (2)class类选择符 (使用点.将自定义名（类名）来定义的选择符)
-
 定义： .类名&#123;样式....&#125; 匿名类
 其他选择符名.类名&#123;样式....&#125;
 使⽤： &lt;html标签 class=&quot;类名&quot;&gt;...&lt;/html标签&gt;
@@ -214,9 +215,26 @@ p.ps&#123;color:green;&#125; /*只有p标签中class属性值为ps的才采⽤�
 注意：类选择符可以在⽹⻚中重复使⽤
 
 (3)Id选择符:
+定义： #id名&#123;样式.....&#125;
+使⽤： &lt;html标签 id=&quot;id名&quot;&gt;...&lt;/html标签&gt;
+注意： id选择符只在⽹⻚中使⽤⼀次.
+选择符的优先级：从⼤到⼩ [ID选择符]-&gt;[class选择符]-&gt;[html选择符]-&gt;[html属性]
+
 (4)关联选择符（包含选择符）
+格式： 选择符1 选择符2 选择符3 ...&#123;样式....&#125;
+table a&#123;....&#125; /*table标签⾥的a标签才采⽤此样式*/
+h1 p&#123;color:red&#125; /*只有h1标签中的p标签才采⽤此样式*/
+
 (5)组合选择符（选择符组）
+格式： 选择符1,选择符2,选择符3 ...&#123;样式....&#125;
+h3,h4,h5&#123;color:green;&#125; /*h3、 h4和h5都采⽤此样式*/
+
 (6)伪类选(伪元素)择符：
+格式： 标签名:伪类名&#123;样式....&#125;
+a:link &#123;color: #FF0000; text-decoration: none&#125; /* 未访问的链接 */
+a:visited &#123;color: #00FF00; text-decoration: none&#125; /* 已访问的链接 */
+a:hover &#123;color: #FF00FF; text-decoration: underline&#125; /* ⿏标在链接上 */
+a:active &#123;color: #0000FF; text-decoration: underline&#125; /* 激活链接 */
 </code></pre>
 <h3 id="其他选择器"><a href="#其他选择器" class="headerlink" title="其他选择器"></a>其他选择器</h3><pre><code>(1)关系选择器：
 (2)属性选择器
@@ -224,6 +242,27 @@ p.ps&#123;color:green;&#125; /*只有p标签中class属性值为ps的才采⽤�
 (4)状态伪类选择器
 (5)其他伪类选择器
 </code></pre>
+<h2 id="2、CSS常用属性"><a href="#2、CSS常用属性" class="headerlink" title="2、CSS常用属性"></a>2、CSS常用属性</h2><pre><code>Color颜色属性
+</code></pre>
+<p><img src="../images/081962a2f3d416a3beb78d3be2655a76474dd50b24141ed32f75a29527bc4a5b.png" alt="图 9">  </p>
+<pre><code>字体属性：font
+文本属性
+背景属性：background
+边框：border
+内补白：padding
+外补白：margin
+定位：position
+布局：Layout
+弹性盒子
+用户界面
+多栏
+表格相关属性
+过渡：transition
+动画 Animation
+2D变换
+媒体查询属性
+</code></pre>
+<h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><p><img src="/images/d6c574eb83881bf6bd01dbe824324950c7725813b95857117335755622a0259f.png" alt="图 7">  </p>
 
       
 
@@ -356,7 +395,7 @@ p.ps&#123;color:green;&#125; /*只有p标签中class属性值为ps的才采⽤�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81CSS%E5%B8%B8%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">1、CSS常用选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">常用兼容性选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">其他选择器</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81CSS%E5%B8%B8%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">1、CSS常用选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">常用兼容性选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">其他选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81CSS%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">2、CSS常用属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">盒子模型</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
