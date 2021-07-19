@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yishishizi.github.io">
-  <title>Archives: 2021 | Hexo</title>
+  <title>个人总结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://yishishizi.github.io/archives/2021/index.html">
+  <meta name="description" content="个人心得–python web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人总结">
+<meta property="og:url" content="https://yishishizi.github.io/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="个人心得–python web开发">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-15T02:58:11.000Z">
+<meta property="article:modified_time" content="2021-07-19T02:22:17.643Z">
 <meta property="article:author" content="yishishizi">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -162,36 +167,123 @@
           </div>
           <div id="js-content" class="content-ll">
             
+    <i class="fa fa-thumb-tack"></i>
+    <font color=7D26CD>置顶</font>
+    <span class="post-meta-divider">|</span>
   
+<article id="post-个人总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      个人总结
+    </h1>
+  
+
+        
+        
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
 <a href="/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="archive-article-date">
   	<time datetime="2021-07-15T02:58:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-15</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">个人总结</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>个人心得–python web开发</p>
+<span id="more"></span>
+<pre><code>1.首先Django要使用根URLconf模块，通过setting.py配置文件的ROOT_URLCONF来设置。
+2.加载该模块后并查找变量 urlpatterns。这是一个Python的django.conf.urls.url()实例列表。
+3.Django按顺序运行每个URL模式，并在匹配所请求的URL的第一个URL中停止。
+4.一旦正则表达式匹配，Django将导入并调用给定的视图，这是一个简单的Python函数（或基于类的视图）。该视图会传递以下参数：
+一个实例HttpRequest。
+如果匹配的正则表达式没有返回任何命名组，那么来自正则表达式的匹配将作为位置参数提供。
+关键字参数由正则表达式匹配的任何命名组组成，由可选kwargs参数中指定的任何参数覆盖 django.conf.urls.url()。
+5.如果没有正则表达式匹配，或者在此过程中的任何一点出现异常，Django将调用适当的错误处理视图。
+</code></pre>
+<p>(1) django2.2支持远程访问地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8080</span></span><br></pre></td></tr></table></figure>
+<p>访问时打开cmd，输入ipconfig获取自己的IPv4 地址，然后复制在浏览器上输入”自己的ip地址+8080”<br>(2)项目设置支持远程访问<br>打开项目中的settings.py配置文件，找到ALLOWED_HOSTS=[]项，将自己的IP地址粘贴进去。<br>通用的做法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALLOWED_HOSTS = [&quot;*&quot;]</span><br></pre></td></tr></table></figure>
+<p>(3)创建应用程序，保证与目录处于同一目录，进入当前目录执行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp myapp</span><br></pre></td></tr></table></figure>
+<p>(4)在myapp文件中的view.py下创建我们的视图。网站相应首先找到myweb文件夹下urls的(根路由)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;myapp/&#x27;</span>,include(<span class="string">&#x27;myapp.urls&#x27;</span>))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>根据该路径，找到myapp下的urls文件。根据输入网址myapp/后面的路径，找到相应的路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns=[</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>,views.index,name=<span class="string">&#x27;index&#x27;</span>),<span class="comment">#myapp</span></span><br><span class="line">    path(<span class="string">&#x27;show&#x27;</span>,views.add,name=<span class="string">&#x27;madd&#x27;</span>),<span class="comment">#myapp/show，name是对当前路由起的名称</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>请求view.py下的函数体，执行对应函数</p>
+<p>(5)在myweb/settings.py文件中，通过DATABASES项进行数据库设置，其中name为数据库的名字。<br>创建模型在myapp/model.py文件中编辑，其中Class类名可以随便起，因为数据库名字对应的是class Meta中进d<br>db_table=” “</p>
+<p>(6) 进行数据结构迁移</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+<p>创建一个可以登录管理站点的用户。运行以下命令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser</span><br></pre></td></tr></table></figure>
+<p>(7)通过project的urls，找出app中view相应函数的代码。<br>相反地，通过view相应函数的名称，找到路由urls的地址。<br>urls中的地址看是否与浏览器中输入的地址相符，符合就执行相应的函数，下面的不看。无符合的，网页响应404。</p>
+<pre><code> 通过浏览器访问服务
+    127.0.0.1:8000/abc ==&gt;  root url(根路由) ==&gt; 加载子路由（myweb/urls.py）
 
-        <div class="article-info info-on-right">
-          
+    ==&gt; 正则匹配访问的路径(path) =-=&gt; 视图函数(views.index)
+
+    ==&gt; views.py index() 响应内容
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;Hello world!&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;add...&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span>(<span class="params">request,sid</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;find...%d&quot;</span>%(sid))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;update....&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>(7)urls输入地址的灵活性：用尖括号捕获urls中的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> myapp <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;index/&#x27;</span>,views.index),</span><br><span class="line">    path(<span class="string">&#x27;add/&#x27;</span>,views.add),</span><br><span class="line">    path(<span class="string">&#x27;find/&lt;int:sid&gt;&#x27;</span>,views.find),<span class="comment">#&lt;int:sid&gt;写法必须是&lt;数据类型:参数名&gt;,参数名不能省略</span></span><br><span class="line">    path(<span class="string">&#x27;update/&#x27;</span>,views.update),</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>(8)正则化精确匹配浏览器地址：re_path</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">request,y,m</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;参数信息：%s年%s月&quot;</span>%(y,m))</span><br></pre></td></tr></table></figure>
+<p>在Python正则表达式中，命名正则表达式组的语法为(?P<name>pattern),<br>其中name是组的名称，并且 pattern是匹配的某种模式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">re_path(<span class="string">r&quot;^fun/([0-9]&#123;4&#125;)/([0-9]&#123;2&#125;)$&quot;</span>,views.fun)</span><br><span class="line">正则表达式中y和m的参数信息位置是固定的，所以views.fun中参数的y和m的位置不能改变。</span><br><span class="line"></span><br><span class="line">re_path(<span class="string">r&quot;^fun/?P&lt;y&gt;([0-9]&#123;4&#125;)/?P&lt;m&gt;([0-9]&#123;2&#125;)$&quot;</span>,views.fun)</span><br><span class="line">view.fun中参数y和m的位置可以改变，但y和m参数名要和re_path中参数名一致</span><br></pre></td></tr></table></figure>
+<p>(9)在总路由文件mydemo.urls中配置子路由myapp.urls，方便管理,使用include函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mydemo.urls</span></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&quot;&quot;</span>,include(<span class="string">&quot;myapp.urls&quot;</span>)),<span class="comment">#在当前总路由文件中导入子路由</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">#myapp应用的路由文件</span></span><br><span class="line"><span class="comment">#myapp.urls</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path,re_path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;index/&#x27;</span>,views.index),</span><br><span class="line">    path(<span class="string">&#x27;add/&#x27;</span>,views.add),</span><br><span class="line">    path(<span class="string">&#x27;find/&lt;int:sid&gt;&#x27;</span>,views.find),</span><br><span class="line">    re_path(<span class="string">r&quot;^fun/?P&lt;y&gt;([0-9]&#123;4&#125;)/?P&lt;m&gt;([0-9]&#123;2&#125;)$&quot;</span>,views.fun),</span><br><span class="line">    path(<span class="string">&#x27;update/&#x27;</span>,views.update),</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>(10)反向解析地址<br>在myapp.urls中为path设置name</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">&#x27;index/&#x27;</span>,views.index,name=<span class="string">&#x27;index&#x27;</span>),</span><br><span class="line">path(<span class="string">&#x27;add/&#x27;</span>,views.add,name=<span class="string">&#x27;add&#x27;</span>),</span><br></pre></td></tr></table></figure>
+<p>在views.py文件中导入reverse，进行反向解析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse,Http404</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse</span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(reverse(<span class="string">&#x27;add&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;Hello world!&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;add...&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>老板大气！！！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechatshoukuan.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,276 +295,136 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yishishizi.github.ioithub.io/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/15/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9103/" class="archive-article-date">
-  	<time datetime="2021-07-15T01:58:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/15/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9103/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python-网站页面开发03</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/15/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9103/">python-网站页面开发03</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/14/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9102/" class="archive-article-date">
-  	<time datetime="2021-07-14T01:40:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/14/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9102/">python 网站页面开发02</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9101/" class="archive-article-date">
-  	<time datetime="2021-07-13T03:07:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9101/">python 网站页面开发01</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/12/hexo%E6%8D%A2%E7%94%B5%E8%84%91%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-07-12T12:51:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/12/hexo%E6%8D%A2%E7%94%B5%E8%84%91%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/">hexo换电脑时，如何迁移博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/12/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A/" class="archive-article-date">
-  	<time datetime="2021-07-12T08:46:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-12</time>
-</a>
-        </div>
-    	 
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://yishishizi.github.io/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/",
+  //id: 'Thu Jul 15 2021 10:58:11 GMT+0800',
+  owner: '‘yishishizi’',
+  repo: 'yishishizi.github.io',
+  oauth: {
+    client_id: 'e155a3da224f1cdd4371',
+    client_secret: 'a97c60dc7d7de13605d0086b62a349883d349989',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/12/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A/">将本地代码上传到github上</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/12/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" class="archive-article-date">
-  	<time datetime="2021-07-12T06:23:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/12/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">上传本地图片</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-07-10T08:53:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/">我的博客搭建历程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">主页</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/07/10/hello-world/" class="archive-article-date">
-  	<time datetime="2021-07-10T07:17:05.695Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/10/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -511,8 +463,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
