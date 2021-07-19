@@ -16,7 +16,7 @@
 <meta property="og:description" content="Django介绍">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-19T02:48:03.000Z">
-<meta property="article:modified_time" content="2021-07-19T02:48:31.351Z">
+<meta property="article:modified_time" content="2021-07-19T07:34:03.157Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
   
@@ -194,6 +194,89 @@
       
         <p>Django介绍</p>
 <span id="more"></span>
+<h2 id="Django的Model模型介绍"><a href="#Django的Model模型介绍" class="headerlink" title="Django的Model模型介绍"></a>Django的Model模型介绍</h2><pre><code>每个模型都是django.db.models.Model的一个Python 子类。
+模型的每个属性都表示为数据库中的一个字段。
+模型与数据库的关系是orm关系（对象-关系-映射）
+Django 提供一套自动生成的用于数据库访问的API；
+</code></pre>
+<h3 id="Model的开发流程"><a href="#Model的开发流程" class="headerlink" title="Model的开发流程"></a>Model的开发流程</h3><p>1、在应用的model.py中定义模型类，要求继承自models.Model</p>
+<p>2、把应用加入到项目settings.py配置文件的INSTALLED_APPS项中</p>
+<p>3、生成迁移文件</p>
+<pre><code>python manage.py makemigrations
+</code></pre>
+<p>4、执行迁移<br>    python manage.py migrate</p>
+<p>5、使用模型类进行CRUD操作</p>
+<h3 id="model模型的实例"><a href="#model模型的实例" class="headerlink" title="model模型的实例"></a>model模型的实例</h3><pre><code>·模型的实例对象是通过objects属性获取的
+·实例的方法：
+     __str__(self)：重写object方法，此方法在将对象转换成字符串时会被调用
+     save( )：将模型对象保存到数据表中
+     delete( )：将模型对象从数据表中删除
+</code></pre>
+<h3 id="创建并配置项目与应用"><a href="#创建并配置项目与应用" class="headerlink" title="创建并配置项目与应用"></a>创建并配置项目与应用</h3><p>1、创建project</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diango-admin startproject mydemo</span><br></pre></td></tr></table></figure>
+<p>2、创建应用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp myapp</span><br></pre></td></tr></table></figure>
+<p>3、在mydemo文件下设置settings</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#激活模型，该虚线路径添加到该INSTALLED_APPS设置。</span></span><br><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.contenttypes&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.sessions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.messages&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.staticfiles&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;myapp&#x27;</span>,</span><br><span class="line">]</span><br><span class="line"><span class="comment">#通过DATABASES项进行数据库设置</span></span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;mytest&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、定义model模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Users</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    <span class="built_in">id</span>=models.AutoField(primary_key=<span class="literal">True</span>)</span><br><span class="line">    name=models.CharField(max_length=<span class="number">32</span>)</span><br><span class="line">    age=models.IntegerField(default=<span class="number">28</span>)</span><br><span class="line">    phone=models.CharField(max_length=<span class="number">16</span>)</span><br><span class="line">    addtime=models.DateTimeField(default=datetime.now)</span><br><span class="line"></span><br><span class="line"><span class="comment"># class Meta:</span></span><br><span class="line"><span class="comment">#     db_table=&quot;myapp_users&quot;#制定表名</span></span><br></pre></td></tr></table></figure>
+<pre><code>属性的字段类型
+AutoField：一个根据实际ID自动增长的IntegerField，通常不指定
+如果不指定，一个主键字段将自动添加到模型中
+BooleanField：true/false 字段，此字段的默认表单控制是CheckboxInput
+NullBooleanField：支持null、true、false三种值
+CharField(max_length=字符长度)：字符串，默认的表单样式是 TextInput
+TextField：大文本字段，一般超过4000使用，默认的表单控件是Textarea
+IntegerField：整数
+DecimalField(max_digits=None, decimal_places=None)：使用python的Decimal实例表示的十进制浮点数
+DecimalField.max_digits：位数总数
+DecimalField.decimal_places：小数点后的数字位数
+FloatField：用Python的float实例来表示的浮点数
+DateField[auto_now=False, auto_now_add=False])：使用Python的datetime.date实例表示的日期
+参数DateField.auto_now：每次保存对象时，自动设置该字段为当前时间，用于&quot;最后一次修改&quot;的时间戳，它总是使用当前日期，默认为false
+参数DateField.auto_now_add：当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为false
+该字段默认对应的表单控件是一个TextInput. 在管理员站点添加了一个JavaScript写的日历控件，和一个“Today&quot;的快捷按钮，包含了一个额外的invalid_date错误消息键
+auto_now_add, auto_now, and default 这些设置是相互排斥的，他们之间的任何组合将会发生错误的结果
+TimeField：使用Python的datetime.time实例表示的时间，参数同DateField
+DateTimeField：使用Python的datetime.datetime实例表示的日期和时间，参数同DateField
+FileField：一个上传文件的字段
+ImageField：继承了FileField的所有属性和方法，但对上传的对象进行校验，确保它是个有效的image
+
+字段选项
+通过字段选项，可以实现对字段的约束
+在字段对象时通过关键字参数指定
+null：如果为True，Django 将空值以NULL 存储到数据库中，默认值是 False
+blank：如果为True，则该字段允许为空白，默认值是 False
+对比：null是数据库范畴的概念，blank是表单验证证范畴的
+db_column：字段的名称，如果未指定，则使用属性的名称
+db_index：若值为 True, 则在表中会为此字段创建索引
+default：默认值
+primary_key：若为 True, 则该字段会成为模型的主键字段
+unique：如果为 True, 这个字段在表中必须有唯一值
+</code></pre>
+<p>5、生成迁移文件,执行迁移</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成迁移文件</span></span><br><span class="line">python manange.py makemigrations</span><br><span class="line"><span class="comment">#执行迁移</span></span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+<h2 id="执行Model的操作"><a href="#执行Model的操作" class="headerlink" title="执行Model的操作"></a>执行Model的操作</h2><p>1、 配置mydeomodel中的路由文件，选择配置子路由文件的格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path,include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="comment">#path(&#x27;admin/&#x27;, admin.site.urls),</span></span><br><span class="line">    path(<span class="string">&quot;&quot;</span>,include(<span class="string">&quot;myapp.urls&quot;</span>)),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path,include</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>, views.index,name=<span class="string">&quot;index&quot;</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>2、在views.py中编写增删改查操作命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> myapp.models <span class="keyword">import</span> Users</span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="comment">#执行Model的操作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># #添加操作</span></span><br><span class="line">    <span class="comment"># ob=Users()#实例化一个新对象</span></span><br><span class="line">    <span class="comment"># ob.name=&quot;王五&quot;</span></span><br><span class="line">    <span class="comment"># ob.age=23</span></span><br><span class="line">    <span class="comment"># ob.phone=&quot;529894579&quot;</span></span><br><span class="line">    <span class="comment"># ob.save()#新对象是添加数据，已存在的对象进行修改操作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># #删除操作</span></span><br><span class="line">    <span class="comment"># mod=Users.objects#获取users的model对象</span></span><br><span class="line">    <span class="comment"># user=mod.get(id=6)#获取id为6的数据信息</span></span><br><span class="line">    <span class="comment"># print(user.name)</span></span><br><span class="line">    <span class="comment"># user.delete()#执行删除操作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#修改操作</span></span><br><span class="line">    <span class="comment"># ob=Users.objects.get(id=7)</span></span><br><span class="line">    <span class="comment"># #print(ob.name)</span></span><br><span class="line">    <span class="comment"># ob.name=&quot;刘七&quot;</span></span><br><span class="line">    <span class="comment"># ob.age=56</span></span><br><span class="line">    <span class="comment"># ob.save()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#查询操作</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;首页&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>model的查询操作</p>
+<ul>
+<li>all() 查询所有数据</li>
+<li>filter() 过滤查询，查询部分数据</li>
+<li>exclude()</li>
+<li>order_by() 排序</li>
+<li>values()：一个对象构成一个字典，然后构成一个列表返回</li>
+</ul>
+<p>返回单个值的方法</p>
+<ul>
+<li>get()：返回单个满足条件的对象<br>如果未找到会引发”模型类.DoesNotExist”异常<br>如果多条被返回，会引发”模型类.MultipleObjectsReturned”异常</li>
+<li>count()：返回当前查询的总条数</li>
+<li>first()：返回第一个对象</li>
+<li>last()：返回最后一个对象</li>
+<li>exists()：判断查询集中是否有数据，如果有则返回True</li>
+</ul>
+
       
 
       
@@ -320,7 +403,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84Model%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">Django的Model模型介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model%E7%9A%84%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">Model的开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#model%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">model模型的实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">创建并配置项目与应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8CModel%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">执行Model的操作</span></a></li></ol>
                     </div>
                 </span>
             </div>
