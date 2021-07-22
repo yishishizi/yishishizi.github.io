@@ -16,7 +16,7 @@
 <meta property="og:description" content="Django介绍">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-19T02:48:03.000Z">
-<meta property="article:modified_time" content="2021-07-21T06:28:52.562Z">
+<meta property="article:modified_time" content="2021-07-22T08:57:32.634Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
   
@@ -327,6 +327,142 @@ urlpatterns = [
 方法:
     is_ajax()：如果请求是通过XMLHttpRequest发起的，则返回True
 </code></pre>
+<p>8、在编辑form表单的时候，如果是post（加密）提交，选择POST接受方式，如果是get（明文）提交，选择GET接受方式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&#123;% url &#x27;updateusers&#x27; %&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Django的模板层"><a href="#Django的模板层" class="headerlink" title="Django的模板层"></a>Django的模板层</h2><ul>
+<li><p>在项目的settings.py配置文件中配置模板目录</p>
+<p>  ‘DIRS’: [os.path.join(BASE_DIR,’templates’)],</p>
+</li>
+<li><p>在应用的视图文件加载模板，并放置要输出的数据</p>
+<p>  return render(request,“目录/模板文件.html”,{放置字典数据})</p>
+</li>
+<li><p>在模板文件中使用变量、标签和过滤器等输出信息</p>
+<pre><code>  &#123;&#123; 变量 &#125;&#125;    &#123;% 标签 %&#125;    &#123;&#123; 变量|过滤器 &#125;&#125;
+</code></pre>
+<p>1、变量输出语法</p>
+  </li>
+<li><p>当模版引擎遇到一个变量，将计算这个变量，然后将结果输出</p>
+</li>
+<li><p>变量名必须由字母、数字、下划线（不能以下划线开头）和点组成</p>
+</li>
+<li><p>当模版引擎遇到点(“.”)，会按照下列顺序查询：<br>  字典查询，例如：foo[“bar”]<br>  属性或方法查询，例如：foo.bar<br>  数字索引查询，例如：foo[bar]</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;stu.name&#125;&#125; &#123;&#123;stu.age&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">a=[10,20,30]</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;a.0&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span>#不能写成a[0]</span><br></pre></td></tr></table></figure></li>
+<li><p>如果变量不存在， 模版系统将插入’’ (空字符串)</p>
+</li>
+<li><p>在模板中调用方法时不能传递参数</p>
+</li>
+</ul>
+<p>2、标签</p>
+<pre><code>语法
+&#123; %  tag  % &#125;
+</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">for标签</span><br><span class="line">&#123; %  for ... in ...  % &#125;</span><br><span class="line">    循环逻辑</span><br><span class="line"></span><br><span class="line">&#123; %  endfor  % &#125;</span><br><span class="line"></span><br><span class="line">if标签</span><br><span class="line">&#123; %  if ...  % &#125;</span><br><span class="line">    逻辑1</span><br><span class="line">&#123; %  elif ...  % &#125;</span><br><span class="line">    逻辑2</span><br><span class="line">&#123; %  else  % &#125;</span><br><span class="line">    逻辑3</span><br><span class="line">&#123; %  endif  % &#125;</span><br><span class="line"></span><br><span class="line">comment标签</span><br><span class="line">&#123; %  comment  % &#125;</span><br><span class="line">    多行注释</span><br><span class="line">&#123; %  endcomment  % &#125;</span><br><span class="line"></span><br><span class="line">include：加载模板并以标签内的参数渲染</span><br><span class="line">&#123; %  include &quot;base/index.html&quot;  % &#125;</span><br><span class="line"></span><br><span class="line">url：反向解析</span><br><span class="line">&#123; %  url &#x27;name&#x27; p1 p2  % &#125;</span><br><span class="line"></span><br><span class="line">csrf_token：这个标签用于跨站请求伪造保护</span><br><span class="line">&#123; %  csrf_token  % &#125;</span><br></pre></td></tr></table></figure>
+<p>作用</p>
+<ul>
+<li>在输出中创建文本</li>
+<li>控制循环或逻辑</li>
+<li>加载外部信息到模板中</li>
+</ul>
+<p>3、过滤器</p>
+<pre><code>语法：
+&#123; &#123;  变量|过滤器  &#125; &#125;，例如&#123; &#123;  name|lower  &#125; &#125;，表示将变量name的值变为小写输出
+</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">可以在if标签中使用过滤器结合运算符</span><br><span class="line">if list1|length &gt; 1</span><br><span class="line">过滤器能够被“串联”，构成过滤器链</span><br><span class="line">name|lower|upper</span><br><span class="line">过滤器可以传递参数，参数使用引号包起来</span><br><span class="line">list|join:&quot;, &quot;</span><br><span class="line">default：如果一个变量没有被提供，或者值为false或空，则使用默认值，否则使用变量的值</span><br><span class="line">value|default:&quot;什么也没有&quot;</span><br><span class="line">date：根据给定格式对一个date变量格式化</span><br><span class="line">value|date:&#x27;Y-m-d&#x27;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用管道符号 (|)来应用过滤器</li>
+<li>通过使用过滤器来改变变量的计算结果</li>
+<li>关闭HTML自动转义</li>
+</ul>
+<p>网址：<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/2.2/ref/templates/builtins/#ref-templates-builtins-filters">https://docs.djangoproject.com/zh-hans/2.2/ref/templates/builtins/#ref-templates-builtins-filters</a></p>
+<p>4、注释</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">单行注释</span><br><span class="line">&#123;# 注释 #&#125;</span><br><span class="line">多行注释</span><br><span class="line">&#123;%  comment  %&#125;</span><br><span class="line">      多行注释</span><br><span class="line">&#123;%  endcomment  %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、模板运算</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">加</span><br><span class="line">&#123; &#123;  value|add:10  &#125; &#125;</span><br><span class="line">note:value=5,则结果返回15</span><br><span class="line">减</span><br><span class="line">&#123; &#123;  value|add:-10  &#125; &#125;</span><br><span class="line">note:value=5,则结果返回-5，加一个负数就是减法了</span><br><span class="line">乘</span><br><span class="line">&#123; %  widthratio 5 1 100  % &#125;</span><br><span class="line">note:等同于：(5 / 1) * 100 ，结果返回500，</span><br><span class="line">withratio需要三个参数，它会使用参数1/参数2*参数3的方式进行运算，进行乘法运算，使「参数2」=1</span><br><span class="line">除</span><br><span class="line">&#123; %  widthratio 5 100 1  % &#125;</span><br><span class="line">note:等同于：(5 / 100) * 1,则结果返回0.05,和乘法一样，使「参数3」= 1就是除法了。</span><br></pre></td></tr></table></figure>
+<h2 id="Django的模板继承"><a href="#Django的模板继承" class="headerlink" title="Django的模板继承"></a>Django的模板继承</h2><pre><code>模板继承可以减少页面内容的重复定义，实现页面内容的重用
+典型应用：网站的头部、尾部是一样的，这些内容可以定义在父模板中，子模板不需要重复定义
+block标签：在父模板中预留区域，在子模板中填充
+extends继承：继承，写在模板文件的第一行
+定义父模板base.html
+&#123; %  block block_name  % &#125;
+   这里可以定义默认值
+   如果不定义默认值，则表示空字符串
+&#123; %  endblock  % &#125;
+定义子模板index.html
+&#123; %  extends &quot;base.html&quot;  % &#125;
+在子模板中使用block填充预留区域
+&#123; %  block block_name  % &#125;
+实际填充内容
+&#123; %  endblock  % &#125;
+说明
+如果在模版中使用extends标签，它必须是模版中的第一个标签
+不能在一个模版中定义多个相同名字的block标签
+子模版不必定义全部父模版中的blocks，如果子模版没有定义block，则使用了父模版中的默认值
+如果发现在模板中大量的复制内容，那就应该把内容移动到父模板中
+使用可以获取父模板中block的内容
+为了更好的可读性，可以给endblock标签一个名字
+&#123; %  block block_name  % &#125;
+    区域内容
+&#123; %  endblock block_name  % &#125;
+</code></pre>
+<h2 id="Ajxa应用实战"><a href="#Ajxa应用实战" class="headerlink" title="Ajxa应用实战"></a>Ajxa应用实战</h2><ul>
+<li>Ajax = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</li>
+<li>Ajax 不是新的编程语言，而是一种使用现有标准的新方法。</li>
+<li>Ajax 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</li>
+<li>本次案例是使用jQuery实现一个城市级联信息加载实战</li>
+</ul>
+<p>1、json数据类型</p>
+<pre><code>在 JSON 中，值必须是以下数据类型之一：
+字符串
+数字
+对象（JSON 对象）
+数组
+布尔
+Null
+
+JSON 的值不可以是以下数据类型之一：
+函数
+日期
+undefined
+
+JSON 字符串
+JSON 中的字符串必须用双引号包围。
+实例
+&#123; &quot;name&quot;:&quot;John&quot; &#125;
+
+JSON 数字
+JSON 中的数字必须是整数或浮点数。
+实例
+&#123; &quot;age&quot;:30 &#125;
+
+JSON 对象
+JSON 中的值可以是对象。    
+实例
+&#123;
+&quot;employee&quot;:&#123; &quot;name&quot;:&quot;Bill Gates&quot;, &quot;age&quot;:62, &quot;city&quot;:&quot;Seattle&quot; &#125;
+&#125;
+JSON 中作为值的对象必须遵守与 JSON 对象相同的规则。
+
+JSON 数组
+JSON 中的值可以是数组。
+实例
+&#123;
+&quot;employees&quot;:[ &quot;Bill&quot;, &quot;Steve&quot;, &quot;David&quot; ]
+&#125;
+
+JSON 布尔
+JSON 中的值可以是 true/false。
+实例
+&#123; &quot;sale&quot;:true &#125;
+
+JSON null
+JSON 中的值可以是 null。
+实例
+&#123; &quot;middlename&quot;:null &#125;
+</code></pre>
+<p>2、配置静态资源目录</p>
+<p>静态文件:项目中的CSS、图片、js都是静态文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在settings设置最后中加入以下代码:</span><br><span class="line">STATIC_URL = &#x27;/static/&#x27;</span><br><span class="line"></span><br><span class="line">STATICFILES_DIRS = [</span><br><span class="line">    os.path.join(BASE_DIR,&#x27;static&#x27;),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
       
 
@@ -454,7 +590,7 @@ urlpatterns = [
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84Model%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">Django的Model模型介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model%E7%9A%84%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">Model的开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#model%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">model模型的实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">创建并配置项目与应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8CModel%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">执行Model的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84%E8%A7%86%E5%9B%BE%E5%B1%82"><span class="toc-number">3.</span> <span class="toc-text">Django的视图层</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84Model%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">Django的Model模型介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model%E7%9A%84%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">Model的开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#model%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">model模型的实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">创建并配置项目与应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8CModel%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">执行Model的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84%E8%A7%86%E5%9B%BE%E5%B1%82"><span class="toc-number">3.</span> <span class="toc-text">Django的视图层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%B1%82"><span class="toc-number">4.</span> <span class="toc-text">Django的模板层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF"><span class="toc-number">5.</span> <span class="toc-text">Django的模板继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ajxa%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98"><span class="toc-number">6.</span> <span class="toc-text">Ajxa应用实战</span></a></li></ol>
                     </div>
                 </span>
             </div>
