@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yishishizi.github.io">
-  <title>将本地代码上传到github上 | Hexo</title>
+  <title>Django常用的web工具 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用git将本地代码上传到github上">
+  <meta name="description" content="Django常用的web工具 ① 文件上传 ② 分页操作 ③ 富文本编辑器 ④ Django部署Apache">
 <meta property="og:type" content="article">
-<meta property="og:title" content="将本地代码上传到github上">
-<meta property="og:url" content="https://yishishizi.github.io/2021/07/12/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A/index.html">
+<meta property="og:title" content="Django常用的web工具">
+<meta property="og:url" content="https://yishishizi.github.io/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="使用git将本地代码上传到github上">
+<meta property="og:description" content="Django常用的web工具 ① 文件上传 ② 分页操作 ③ 富文本编辑器 ④ Django部署Apache">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-12T08:46:13.000Z">
-<meta property="article:modified_time" content="2021-07-12T11:44:34.772Z">
+<meta property="article:published_time" content="2021-07-23T00:57:43.000Z">
+<meta property="article:modified_time" content="2021-07-23T13:04:08.678Z">
 <meta property="article:author" content="yishishizi">
-<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -167,14 +166,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-将本地代码上传到github上" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-Django常用的web工具" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      将本地代码上传到github上
+      Django常用的web工具
     </h1>
   
 
@@ -185,63 +184,52 @@
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
 	</span>
 
-<a href="/2021/07/12/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A/" class="archive-article-date">
-  	<time datetime="2021-07-12T08:46:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-12</time>
+<a href="/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/" class="archive-article-date">
+  	<time datetime="2021-07-23T00:57:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用git将本地代码上传到github上</p>
+        <p>Django常用的web工具</p>
+<p>① 文件上传</p>
+<p>② 分页操作</p>
+<p>③ 富文本编辑器</p>
+<p>④ Django部署Apache</p>
 <span id="more"></span>
-<h2 id="1、安装git客户端："><a href="#1、安装git客户端：" class="headerlink" title="1、安装git客户端："></a>1、安装git客户端：</h2><pre><code>1.1 下载git
-    官网：git-scm.com/download/
-    镜像：https://npm.taobao.org/mirrors/git-for-windows/?utm_source=qq&amp;utm_medium=social&amp;utm_oi=793691189428776960
-2.2 安装git
-2.3 绑定用户
-    git config --global user.name &quot;username&quot;
-    git config --global user.email &quot;useremail&quot;
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><ul>
+<li>当Django在处理文件上传的时候，文件数据被保存在request.FILES</li>
+<li>FILES中的每个键为<code>&lt;input type=&quot;file&quot; name=&quot;&quot; /&gt;</code>中的name</li>
+</ul>
+<p>注意：FILES只有在请求的方法为POST 且提交的<form>带有enctype=”multipart/form-data” 的情况下才会包含数据。</p>
+<ul>
+<li>否则，FILES 将为一个空的类似于字典的对象</li>
+</ul>
+<p>1、form表单中要使用post方法提交，enctype选择<code>multipart/form-data</code>,在使用包含文件上传控件的表单时，必须使用该值。<br><code>application/x-www-form-urlencoded</code>代表当前表单只有提交功能，没有上传功能。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&#123;% url &#x27;doupload&#x27; %&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>文件名称:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;title&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>上传文件:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;上传&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2、FILES方式接受文件上传</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myflie=request.FILES.get(<span class="string">&quot;pic&quot;</span>,<span class="literal">None</span>)<span class="comment">#FILES只接受上传信息</span></span><br></pre></td></tr></table></figure>
+<p>如果在form表单中input上传的是’file’类型，在views视图中使用FILES方式接受，如果是’text’其他类型，使用POST或GET方式进行接受</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">myflie=request.FILES.get(<span class="string">&quot;pic&quot;</span>,<span class="literal">None</span>)<span class="comment">#FILES只接受上传信息</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> myflie:</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;没有上传文件信息&quot;</span>)</span><br><span class="line"><span class="comment"># print(myflie)</span></span><br><span class="line"><span class="comment"># print(request.POST.get(&quot;title&quot;))</span></span><br></pre></td></tr></table></figure>
+<h2 id="分页操作"><a href="#分页操作" class="headerlink" title="分页操作"></a>分页操作</h2><pre><code>Django提供了一些类实现管理数据分页，这些类位于django/core/paginator.py中
+Paginator对象
+    Paginator(列表,int)：返回分页对象，参数为列表数据，每面数据的条数
+属性
+count：对象总数
+num_pages：页面总数
+page_range：页码列表，从1开始，例如[1, 2, 3, 4]
+方法
+    page(num)：下标以1开始，如果提供的页码不存在，抛出InvalidPage异常
 </code></pre>
-<h2 id="2、设置ssh密钥："><a href="#2、设置ssh密钥：" class="headerlink" title="2、设置ssh密钥："></a>2、设置ssh密钥：</h2><pre><code>2.1 生成ssh密钥
-    在git bash中输入ssh-keygen -t rsa -C &quot;useremail&quot;，一直按回车，不要输入yes。
-2.2 在C:\Users\user\.ssh路径下找到.pub结尾的文件，并用记事本打开，复制里面的内容.
-2.3 打开个人github界面，进入setting-SSH and GPG keys,点击new ssh key,title内容随意，key里面复制.pub文件的内容。
-2.4 在git中输入ssh -T git @github.com，看密钥配置是否成功。
-</code></pre>
-<h2 id="3、上传项目到github"><a href="#3、上传项目到github" class="headerlink" title="3、上传项目到github"></a>3、上传项目到github</h2><pre><code>3.1 在本地项目中右击鼠标，打开git bash。
-3.2 输入
-    git config --global user.name &quot;username&quot;
-    git config --global user.email &quot;useremail&quot;
-3.3 输入git init进行初始化
-3.4 输入git add .注意add后面有空格
-3.5 输入git commit -m &quot;first commit&quot;，对本次上传进行一下说明。
-3.6 输入git remote add origin git@github.com:547343578/xxx.git关联github仓库。github仓库地址一定要选择ssh。
-3.7 输入git push -u origin master上传本地代码
-注：若步骤3.7出错，查看github仓库里面是否有readme文件，如果有，需要先将readme文件拿下来，下载到本地仓库中。
-3.7.1 输入 git pull --rebase origin master
-若对代码进行了更新，需要再次重新上传的，先执行3.7.1，再执行3.7即可。
-master是默认的分支，如果上传到其他分支，需要改成对应的名字。
-</code></pre>
-<h2 id="4、创建仓库分支"><a href="#4、创建仓库分支" class="headerlink" title="4、创建仓库分支"></a>4、创建仓库分支</h2><pre><code>4.1 执行git branch test 创建一个test分支
-4.2 输入git checkout test 切换到test分支
-4.3 输入git add .
-4.4 输入git commit -m &quot;first commit&quot;，对本次上传进行一下说明。
-4.5 输入git remote add origin git@github.com:547343578/xxx.git关联github仓库。github仓库地址一定要选择ssh。
-4.6 输入git push -u origin master上传本地代码
-4.7 githu仓库主页上此时会显示compare&amp;pull request，点击进去点击create pull reques，点击merge pull request，点击confirm merge。
-</code></pre>
-<h2 id="5、删除项目中的多余分支"><a href="#5、删除项目中的多余分支" class="headerlink" title="5、删除项目中的多余分支"></a>5、删除项目中的多余分支</h2><pre><code>5.1 输入git push origin :test
-</code></pre>
-<h2 id="6、删除库"><a href="#6、删除库" class="headerlink" title="6、删除库"></a>6、删除库</h2><pre><code>进入要删除库中的setting，页面最后点击delete即可。
-</code></pre>
-<h2 id="7、克隆分支到本地"><a href="#7、克隆分支到本地" class="headerlink" title="7、克隆分支到本地"></a>7、克隆分支到本地</h2><pre><code>git clone -b hexo git@github.com:heimu24/heimu24.github.io.git
-ps： -b就是branch分支的意思，hexo就是hexo分支，后面的地址就是你自己的repository地址 
-</code></pre>
-<h2 id="参考教程："><a href="#参考教程：" class="headerlink" title="参考教程："></a>参考教程：</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV195411t7tA?from=search&seid=9459704741008066552">B站-【程序员一定要掌握的技巧】使用Git上传本地代码到GitHub教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eV411s73X?from=search&seid=9459704741008066552">B站-如何像程序员一样帅气地使用github？十分钟学会上传项目!</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fqlife/p/8493745.html">浮生.若梦博客</a></p>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> myapp.models <span class="keyword">import</span> Users</span><br><span class="line"><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pageUsers</span>(<span class="params">request,pindex=<span class="number">1</span></span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        list1=Users.objects.<span class="built_in">filter</span>()</span><br><span class="line">        p=Paginator(list1,<span class="number">5</span>)</span><br><span class="line">        <span class="comment">#判断页码值是否有效(防止越界)</span></span><br><span class="line">        <span class="keyword">if</span> pindex&lt;<span class="number">1</span>:</span><br><span class="line">            pindex = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> pindex&gt;p.num_pages:</span><br><span class="line">            pindex=p.num_pages</span><br><span class="line">        ulist = p.page(pindex)</span><br><span class="line">        context=&#123;<span class="string">&quot;userslist&quot;</span>:ulist,<span class="string">&quot;pindex&quot;</span>:pindex,<span class="string">&quot;pagelist&quot;</span>:p.page_range&#125;</span><br><span class="line">        <span class="keyword">return</span> render(request,<span class="string">&quot;myapp/users/index2.html&quot;</span>,context)<span class="comment">#加载模板</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;没有找到用户信息！&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>1、<code>&#123;% if pindex == p %&#125;</code>中pindex == p注意空格，要不然会报错</p>
+<p>2、主页面index设置<code>&lt;li&gt;&lt;a href=&quot;&#123;% url 'pageusers' 1 %&#125;&quot;&gt;3.分页浏览用户信息&lt;/a&gt;&lt;/li&gt;</code></p>
+<p>3、input中name：定义 input 元素的名称，文本框中输入一个“张”，则keyword值为张。value：规定 input 元素的值。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">姓名:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">size</span>=<span class="string">&quot;10&quot;</span> <span class="attr">name</span>=<span class="string">&quot;keyword&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;搜索&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>4、<code>list1 = Users.objects.filter(name__contains=kw)</code>模糊查询，对name字段做包含式搜索。<br>类似mysql中的<code>like &#39;%张&#39;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT `studentname`,`majorname`</span><br><span class="line">FROM `student` s</span><br><span class="line">INNER JOIN `major` m ON s.`majorid`=m.`majorid`</span><br><span class="line">WHERE s.`studentname` LIKE &#x27;%张&#x27;;</span><br></pre></td></tr></table></figure>
+<h2 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h2>
       
 
       
@@ -275,17 +263,6 @@ ps： -b就是branch分支的意思，hexo就是hexo分支，后面的地址就�
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -336,7 +313,7 @@ ps： -b就是branch分支的意思，hexo就是hexo分支，后面的地址就�
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yishishizi.github.ioithub.io/2021/07/12/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yishishizi.github.ioithub.io/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -350,18 +327,9 @@ ps： -b就是branch分支的意思，hexo就是hexo分支，后面的地址就�
   
 <nav id="article-nav">
   
-    <a href="/2021/07/12/hexo%E6%8D%A2%E7%94%B5%E8%84%91%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          hexo换电脑时，如何迁移博客
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/07/12/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">上传本地图片</div>
+    <a href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Django介绍</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -388,7 +356,7 @@ ps： -b就是branch分支的意思，hexo就是hexo分支，后面的地址就�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85git%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1、安装git客户端：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%AE%BE%E7%BD%AEssh%E5%AF%86%E9%92%A5%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">2、设置ssh密钥：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E5%88%B0github"><span class="toc-number">3.</span> <span class="toc-text">3、上传项目到github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E5%88%86%E6%94%AF"><span class="toc-number">4.</span> <span class="toc-text">4、创建仓库分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%88%A0%E9%99%A4%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%A4%9A%E4%BD%99%E5%88%86%E6%94%AF"><span class="toc-number">5.</span> <span class="toc-text">5、删除项目中的多余分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%88%A0%E9%99%A4%E5%BA%93"><span class="toc-number">6.</span> <span class="toc-text">6、删除库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%85%8B%E9%9A%86%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">7.</span> <span class="toc-text">7、克隆分支到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%95%99%E7%A8%8B%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">参考教程：</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.</span> <span class="toc-text">文件上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">分页操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">富文本编辑器</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -413,8 +381,8 @@ ps： -b就是branch分支的意思，hexo就是hexo分支，后面的地址就�
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://yishishizi.github.io/2021/07/12/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0github%E4%B8%8A/",
-  //id: 'Mon Jul 12 2021 16:46:13 GMT+0800',
+  id: "https://yishishizi.github.io/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/",
+  //id: 'Fri Jul 23 2021 08:57:43 GMT+0800',
   owner: '‘yishishizi’',
   repo: 'yishishizi.github.io',
   oauth: {
