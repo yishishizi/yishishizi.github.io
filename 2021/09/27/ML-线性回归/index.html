@@ -16,8 +16,9 @@
 <meta property="og:description" content="最近开始秋招，复习一下以前学过的ML，记录一下常见的秋招问题">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_1.1.JPG">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_1.2.JPG">
 <meta property="article:published_time" content="2021-09-27T09:09:01.000Z">
-<meta property="article:modified_time" content="2021-09-27T12:50:48.766Z">
+<meta property="article:modified_time" content="2021-09-27T14:07:15.742Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yishishizi.github.io/images/ML_1.1.JPG">
@@ -196,7 +197,10 @@
       
         <p>最近开始秋招，复习一下以前学过的ML，记录一下常见的秋招问题</p>
 <span id="more"></span>
-<p><img src="/images/ML_1.1.JPG"></p>
+<p><img src="/images/ML_1.1.JPG"><br><img src="/images/ML_1.2.JPG"><br>    线性回归是最简单的模型，当噪声为高斯分布时，最大似然估计的解等于最小二乘法的解，当线性回归的损失函数加上L2正则化<br>    时，其最小二乘法的解等于权重为高斯分布下的最大后验概率估计的解，加上L1（lasso)正则化后，其等于拉普拉斯噪声先验下的解。</p>
+<pre><code>对于最小二乘估计，最合理的参数估计量应该使得模型能最好地拟合样本数据，也就是估计值和观测值之差的平方和最小
+对于最大似然法，最合理的参数估计量应该使得从模型中抽取该n组样本观测值的概率最大，也就是概率分布函数或者说是似然函数最大。显然，这是从不同原理出发的两种参数估计方法。因此最大似然法需要已知这个概率分布函数，一般假设其满足正态分布函数的特性，在这种情况下，最大似然估计和最小二乘估计是等价的，也就是说估计结果是相同的，但是原理和出发点完全不同。
+</code></pre>
 
       
 
