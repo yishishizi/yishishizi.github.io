@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yishishizi.github.io">
-  <title>Hexo</title>
+  <title>ML-Logistic回归 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://yishishizi.github.io/index.html">
+  <meta name="description" content="LR模型逻辑回归假设数据服从伯努利分布，损失函数是对数似然函数，运用梯度下降法求解参数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ML-Logistic回归">
+<meta property="og:url" content="https://yishishizi.github.io/2021/09/28/ML-Logistic%E5%9B%9E%E5%BD%92/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="LR模型逻辑回归假设数据服从伯努利分布，损失函数是对数似然函数，运用梯度下降法求解参数。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_2.1.JPG">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_2.2.JPG">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_2.3.JPG">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_2.4.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_2.5.png">
+<meta property="article:published_time" content="2021-09-28T00:35:07.000Z">
+<meta property="article:modified_time" content="2021-09-28T03:34:21.868Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yishishizi.github.io/images/ML_2.1.JPG">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -162,20 +172,24 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="post-ML-Logistic回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-ML-Logistic回归" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/28/ML-Logistic%E5%9B%9E%E5%BD%92/">ML-Logistic回归</a>
+    <h1 class="article-title" itemprop="name">
+      ML-Logistic回归
     </h1>
   
 
         
         
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
 <a href="/2021/09/28/ML-Logistic%E5%9B%9E%E5%BD%92/" class="archive-article-date">
   	<time datetime="2021-09-28T00:35:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-28</time>
 </a>
@@ -185,11 +199,107 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>LR模型<br>逻辑回归假设数据服从伯努利分布，损失函数是对数似然函数，运用梯度下降法求解参数。</p>
-        
-          <a class="article-more-a" href="/2021/09/28/ML-Logistic%E5%9B%9E%E5%BD%92/#more">more >></a>
-        
+<span id="more"></span>
+<h2 id="LR为什么要用sigmod函数？"><a href="#LR为什么要用sigmod函数？" class="headerlink" title="LR为什么要用sigmod函数？"></a>LR为什么要用sigmod函数？</h2><h3 id="最大熵原理"><a href="#最大熵原理" class="headerlink" title="最大熵原理"></a>最大熵原理</h3><p>使用sigmod函数这样找出来的模型是熵最大的。那么为什么要熵最大？最大熵原理是概率模型学习的一个准则，最大熵原理认为，学习概率模型时，在所有可能的概率模型（分布）中，熵最大的模型是最好的模型。</p>
+<h4 id="最大熵模型"><a href="#最大熵模型" class="headerlink" title="最大熵模型"></a>最大熵模型</h4><p><img src="/images/ML_2.1.JPG"></p>
+<h4 id="经验最小化准则"><a href="#经验最小化准则" class="headerlink" title="经验最小化准则"></a>经验最小化准则</h4><p><img src="/images/ML_2.2.JPG"></p>
+<h2 id="LR模型"><a href="#LR模型" class="headerlink" title="LR模型"></a>LR模型</h2><p><img src="/images/ML_2.3.JPG"></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>逻辑回归也会面临过拟合问题，所以我们也要考虑正则化。常见的有L1正则化和L2正则化。逻辑回归的L1正则化损失函数的优化方法常用的有坐标轴下降法和最小角回归法。逻辑回归的L2正则化损失函数的优化方法和普通的逻辑回归类似。</li>
+<li>多元逻辑回归</li>
+</ul>
+<p><img src="/images/ML_2.4.png"></p>
+<ul>
+<li>LR如何解决低维不可分，LR和SVM对比（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/cuiy0818/article/details/81288701%EF%BC%89">https://blog.csdn.net/cuiy0818/article/details/81288701）</a></li>
+</ul>
+<p>Logistic Regression从几率的概念构建线性回归模型。用线性回归的预测结果去逼近后验概率的逻辑发生比。特征映射：通过特征变换的方式把低维空间转换到高维空间，而在低维空间不可分的数据，到高维空间中线性可分的几率会高一些。具体方法：核函数，如：高斯核，多项式核等等。</p>
+<p>共同点：</p>
+<p>1，LR和SVM都是分类算法</p>
+<p>2，如果不考虑核函数，LR和SVM都是线性分类算法，即分类决策面都是线性的</p>
+<p>3，LR和SVM都是有监督学习算法</p>
+<p>4，LR和SVM都是判别模型</p>
+<p>不同点：</p>
+<p>1，损失函数的不同，逻辑回归采用的是log loss（对数损失函数），svm采用的是hinge loss（合页损失函数）</p>
+<p>2，分类原理的不同，LR基于概率理论，通过极大似然估计的方法估计出参数的值，而SVM基于几何间隔最大化原理，认为存在最大几何间隔的分类面为最优分类面，从最大间隔出发，转化为求对变量w和b的凸二次规划问题</p>
+<p>3，由于分类原理的不同，也导致了LR是所有样本都有影响，而SVM只是少量样本有影响的（支持向量），在支持向量外添加样本点是没有影响的，因此LR更能对付异常点</p>
+<p>4，正因为LR受数据影响较大，所以在数据不同类别时，要先对数据做balancing；同样的，由于SVM依赖数据表达的距离测度，所以要先对数据做normalization标准化</p>
+<p>5，对于线性不可分的情况，SVM的核函数可以帮助将低维不可分的数据转换到高维，变成线性可分的，而LR很少用到核函数（并不是没有。。）假设我们在LR里也运用核函数的原理，那么每个样本点都必须参与核计算，这带来的计算复杂度是相当高的。所以，在具体应用时，LR很少运用核函数机制。​</p>
+<p>6，SVM的损失函数就自带正则（损失函数中的1/2||w||^2项），这就是为什么SVM是结构风险最小化算法的原因，而LR必须另外在损失函数上添加正则化</p>
+<p>关于LR和SVM的选择：</p>
+<ol>
+<li><p>如果Feature的数量很大，跟样本数量差不多，这时候选用LR或者是Linear Kernel的SVM</p>
+</li>
+<li><p>如果Feature的数量比较小，样本数量一般，不算大也不算小，选用SVM+Gaussian Kernel</p>
+</li>
+<li><p>如果Feature的数量比较小，而样本数量很多，需要手工添加一些feature变成第一种情况</p>
+</li>
+</ol>
+<ul>
+<li>从图模型角度看LR</li>
+</ul>
+<p>LR模型可以看作是CRF模型的低配版，在完全不定义随机变量交互，只考虑P(Y|X)的情况下，得到的就是LR模型。</p>
+<p>最大熵相比LR，可以提取多组特征（最大熵定义了多个特征函数），本质上等价的。CRF又是最大熵模型序列化的推广。</p>
+<p>本质上，LR和softmax是等价的，而且也可证最大熵和softmax也等价，即可证LR和最大熵的等价性</p>
+<p>LR(最大熵模型)统计的是训练集中的各种数据满足特征函数的频数(conditional)；贝叶斯模型统计的是训练集中的各种数据的频数；CRF统计的是训练集中相关数据 (比如说相邻的词，不相邻的词不统计) 满足特征函数的频数。</p>
+<p>最大熵模型和CRF的区别：最大熵模型在每个状态都有一个概率模型，在每个状态转移时都要进行归一化。如果某个状态只有一个后续 状态，那么该状态到后续状态的跳转概率即为1。这样，不管输入为任何内容，它都向该后续状态跳转。而CRFs是在所有的状态上建立一个统一的概率模型，这 样在进行归一化时，即使某个状态只有一个后续状态，它到该后续状态的跳转概率也不会为1，从而解决了“labelbias”问题。因此，从理论上 讲，CRFs非常适用于中文的词性标注。</p>
+<ul>
+<li>LR 与线性回归的联系与区别<br>LR 与线性回归都是广义的线性回归；</li>
+</ul>
+<p>线性回归模型的优化目标函数是最小二乘，而 LR 则是似然函数；</p>
+<p>线性回归在整个实数域范围内进行预测，敏感度一致，而分类范围，需要在[0,1]。逻辑回归就是一种减小预测范围，将预测值限定为[0,1]间的一种回归模型，因而对于这类问题来说，逻辑回归的鲁棒性比线性回归的要好。</p>
+<p>逻辑回归的模型本质上是一个线性回归模型，逻辑回归都是以线性回归为理论支持的。但线性回归模型无法做到 sigmoid 的非线性形式，sigmoid 可以轻松处理 0/1 分类问题。</p>
+<p>线性回归主要做预测，LR 主要做分类（如二分类）；</p>
+<ul>
+<li>优化方法</li>
+</ul>
+<p>批梯度下降会获得全局最优解，缺点是在更新每个参数的时候需要遍历所有的数据，计算量会很大，并且会有很多的冗余计算，导致的结果是当数据量大的时候，每个参数的更新都会很慢。 </p>
+<p>随机梯度下降是以高方差频繁更新，优点是使得sgd会跳到新的和潜在更好的局部最优解，缺点是使得收敛到局部最优解的过程更加的复杂。 </p>
+<p>小批量梯度下降结合了sgd和batch gd的优点，每次更新的时候使用n个样本。减少了参数更新的次数，可以达到更加稳定收敛结果，一般在深度学习当中我们采用这种方法</p>
+<h2 id="LR优缺点"><a href="#LR优缺点" class="headerlink" title="LR优缺点"></a>LR优缺点</h2><p>优点：</p>
+<pre><code>形式简单，模型的可解释性非常好。从特征的权重可以看到不同的特征对最后结果的影响，某个特征的权重值比较高，那么这个特征最后对结果的影响会比较大。 
+模型效果不错。在工程上是可以接受的（作为baseline)，如果特征工程做的好，效果不会太差，并且特征工程可以大家并行开发，大大加快开发的速度。 
+训练速度较快。分类的时候，计算量仅仅只和特征的数目相关。并且逻辑回归的分布式优化sgd发展比较成熟，训练的速度可以通过堆机器进一步提高，这样我们可以在短时间内迭代好几个版本的模型。 
+资源占用小,尤其是内存。因为只需要存储各个维度的特征值，。 
+方便输出结果调整。逻辑回归可以很方便的得到最后的分类结果，因为输出的是每个样本的概率分数，我们可以很容易的对这些概率分数进行cutoff，也就是划分阈值(大于某个阈值的是一类，小于某个阈值的是一类)。 
+</code></pre>
+<p>缺点:</p>
+<pre><code>准确率并不是很高。因为形式非常的简单(非常类似线性模型)，很难去拟合数据的真实分布。 
+很难处理数据不平衡的问题。举个例子：如果我们对于一个正负样本非常不平衡的问题比如正负样本比 10000:1.我们把所有样本都预测为正也能使损失函数的值比较小。但是作为一个分类器，它对正负样本的区分能力不会很好。 
+处理非线性数据较麻烦。逻辑回归在不引入其他方法的情况下，只能处理线性可分的数据，或者进一步说，处理二分类的问题 。 
+逻辑回归本身无法筛选特征。有时候，我们会用gbdt来筛选特征，然后再上逻辑回归。 
+</code></pre>
+<h2 id="LR如何并行化"><a href="#LR如何并行化" class="headerlink" title="LR如何并行化"></a>LR如何并行化</h2><p>1、按行并行。即将样本拆分到不同的机器上去。</p>
+<p>2、按列并行。按列并行的意思就是将同一样本的特征也分布到不同的机器中去。</p>
+<p><img src="/images/ML_2.5.png"></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>老板大气！！！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechatshoukuan.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -198,16 +308,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/28/ML-Logistic%E5%9B%9E%E5%BD%92/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yishishizi.github.ioithub.io/2021/09/28/ML-Logistic%E5%9B%9E%E5%BD%92/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/27/ML-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ML-线性回归</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -222,629 +391,49 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ML-线性回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/27/ML-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">ML-线性回归</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/09/27/ML-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="archive-article-date">
-  	<time datetime="2021-09-27T09:09:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近开始秋招，复习一下以前学过的ML，记录一下常见的秋招问题</p>
-        
-          <a class="article-more-a" href="/2021/09/27/ML-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/27/ML-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LR%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8sigmod%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">LR为什么要用sigmod函数？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E7%86%B5%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">最大熵原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">最大熵模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%8F%E9%AA%8C%E6%9C%80%E5%B0%8F%E5%8C%96%E5%87%86%E5%88%99"><span class="toc-number">1.1.2.</span> <span class="toc-text">经验最小化准则</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">LR模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">3.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">LR优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR%E5%A6%82%E4%BD%95%E5%B9%B6%E8%A1%8C%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">LR如何并行化</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-web项目开发流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/26/web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">web项目开发流程</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/26/web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-07-26T11:37:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>web项目开发流程</p>
-        
-          <a class="article-more-a" href="/2021/07/26/web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/26/web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django常用的web工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/">Django常用的web工具</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/" class="archive-article-date">
-  	<time datetime="2021-07-23T00:57:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Django常用的web工具</p>
-<p>① 文件上传</p>
-<p>② 分页操作</p>
-<p>③ 富文本编辑器</p>
-<p>④ Django部署Apache</p>
-        
-          <a class="article-more-a" href="/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/">Django介绍</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
-  	<time datetime="2021-07-19T02:48:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Django介绍</p>
-        
-          <a class="article-more-a" href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-个人总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">个人总结</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2021-07-15T02:58:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>个人心得–python web开发</p>
-        
-          <a class="article-more-a" href="/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/15/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python-网站页面开发03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/15/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9103/">python-网站页面开发03</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/15/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9103/" class="archive-article-date">
-  	<time datetime="2021-07-15T01:58:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Django框架介绍与安装</p>
-        
-          <a class="article-more-a" href="/2021/07/15/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9103/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/15/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9103/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python-网站页面开发02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/14/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9102/">python 网站页面开发02</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/14/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9102/" class="archive-article-date">
-  	<time datetime="2021-07-14T01:40:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CSS常用选择器、常用属性及网页布局介绍</p>
-        
-          <a class="article-more-a" href="/2021/07/14/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9102/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/14/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9102/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python-网站页面开发01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9101/">python 网站页面开发01</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9101/" class="archive-article-date">
-  	<time datetime="2021-07-13T03:07:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>python开发网页界面的一些基础知识。前端开发三大核心技术：</p>
-<p>(1)HTML负责将内容呈现到网页中去</p>
-<p>(2)CSS负责美化页面</p>
-<p>(3)JavaScript负责实现网页的一些特效</p>
-        
-          <a class="article-more-a" href="/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9101/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/13/python-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%9101/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo换电脑时，如何迁移博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/12/hexo%E6%8D%A2%E7%94%B5%E8%84%91%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/">hexo换电脑时，如何迁移博客</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/12/hexo%E6%8D%A2%E7%94%B5%E8%84%91%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-07-12T12:51:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何迁移博客</p>
-        
-          <a class="article-more-a" href="/2021/07/12/hexo%E6%8D%A2%E7%94%B5%E8%84%91%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/12/hexo%E6%8D%A2%E7%94%B5%E8%84%91%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://yishishizi.github.io/2021/09/28/ML-Logistic%E5%9B%9E%E5%BD%92/",
+  //id: 'Tue Sep 28 2021 08:35:07 GMT+0800',
+  owner: '‘yishishizi’',
+  repo: 'yishishizi.github.io',
+  oauth: {
+    client_id: 'e155a3da224f1cdd4371',
+    client_secret: 'a97c60dc7d7de13605d0086b62a349883d349989',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -883,8 +472,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
