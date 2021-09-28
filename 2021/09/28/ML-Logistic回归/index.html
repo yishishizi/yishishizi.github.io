@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_2.4.png">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_2.5.png">
 <meta property="article:published_time" content="2021-09-28T00:35:07.000Z">
-<meta property="article:modified_time" content="2021-09-28T06:39:28.129Z">
+<meta property="article:modified_time" content="2021-09-28T06:52:09.193Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yishishizi.github.io/images/ML_2.1.JPG">
@@ -221,18 +221,15 @@
 <p>不同点：</p>
 <p>1，损失函数的不同，逻辑回归采用的是log loss（对数损失函数），svm采用的是hinge loss（合页损失函数）</p>
 <p>2，分类原理的不同，LR基于概率理论，通过极大似然估计的方法估计出参数的值，而SVM基于几何间隔最大化原理，认为存在最大几何间隔的分类面为最优分类面，从最大间隔出发，转化为求对变量w和b的凸二次规划问题</p>
-<p>3，由于分类原理的不同，也导致了LR是所有样本都有影响，而SVM只是少量样本有影响的（支持向量），在支持向量外添加样本点是没有影响的。因此，在异常点很多的情况下，SVM容易受到异常点影响，而LR由于和所有点的分布有关比较稳定</p>
+<p>3，由于分类原理的不同，也导致了LR是所有样本都有影响，而SVM只是少量样本有影响的（支持向量），在支持向量外添加样本点是没有影响的。LR对异常值敏感，SVM对异常值不敏感(抗燥能力,SVM要强)(<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1a41a1567b87)%E3%80%82%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E5%8F%AA%E8%80%83%E8%99%91%E5%B1%80%E9%83%A8%E7%9A%84%E8%BE%B9%E7%95%8C%E7%BA%BF%E9%99%84%E8%BF%91%E7%9A%84%E7%82%B9%EF%BC%8C%E8%80%8C%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%80%83%E8%99%91%E5%85%A8%E5%B1%80%EF%BC%88%E8%BF%9C%E7%A6%BB%E7%9A%84%E7%82%B9%E5%AF%B9%E8%BE%B9%E7%95%8C%E7%BA%BF%E7%9A%84%E7%A1%AE%E5%AE%9A%E4%B9%9F%E8%B5%B7%E4%BD%9C%E7%94%A8%EF%BC%8C%E8%99%BD%E7%84%B6%E4%BD%9C%E7%94%A8%E4%BC%9A%E7%9B%B8%E5%AF%B9%E5%B0%8F%E4%B8%80%E4%BA%9B%EF%BC%89%E3%80%82LR%E6%A8%A1%E5%9E%8B%E6%89%BE%E5%88%B0%E7%9A%84%E9%82%A3%E4%B8%AA%E8%B6%85%E5%B9%B3%E9%9D%A2%EF%BC%8C%E6%98%AF%E5%B0%BD%E9%87%8F%E8%AE%A9%E6%89%80%E6%9C%89%E7%82%B9%E9%83%BD%E8%BF%9C%E7%A6%BB%E4%BB%96%EF%BC%8C%E8%80%8CSVM%E5%AF%BB%E6%89%BE%E7%9A%84%E9%82%A3%E4%B8%AA%E8%B6%85%E5%B9%B3%E9%9D%A2%EF%BC%8C%E6%98%AF%E5%8F%AA%E8%AE%A9%E6%9C%80%E9%9D%A0%E8%BF%91%E4%B8%AD%E9%97%B4%E5%88%86%E5%89%B2%E7%BA%BF%E7%9A%84%E9%82%A3%E4%BA%9B%E7%82%B9%E5%B0%BD%E9%87%8F%E8%BF%9C%E7%A6%BB%EF%BC%8C%E5%8D%B3%E5%8F%AA%E7%94%A8%E5%88%B0%E9%82%A3%E4%BA%9B%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E7%9A%84%E6%A0%B7%E6%9C%AC%E3%80%82">https://www.jianshu.com/p/1a41a1567b87)。支持向量机只考虑局部的边界线附近的点，而逻辑回归考虑全局（远离的点对边界线的确定也起作用，虽然作用会相对小一些）。LR模型找到的那个超平面，是尽量让所有点都远离他，而SVM寻找的那个超平面，是只让最靠近中间分割线的那些点尽量远离，即只用到那些支持向量的样本。</a></p>
 <p>4，正因为LR受数据影响较大，所以在数据不同类别时，要先对数据做balancing；同样的，由于SVM依赖数据表达的距离测度，所以要先对数据做normalization标准化</p>
 <p>5，对于线性不可分的情况，SVM的核函数可以帮助将低维不可分的数据转换到高维，变成线性可分的，而LR很少用到核函数（并不是没有。。）假设我们在LR里也运用核函数的原理，那么每个样本点都必须参与核计算，这带来的计算复杂度是相当高的。所以，在具体应用时，LR很少运用核函数机制。​</p>
 <p>6，SVM的损失函数就自带正则（损失函数中的1/2||w||^2项），这就是为什么SVM是结构风险最小化算法的原因，而LR必须另外在损失函数上添加正则化</p>
 <p>关于LR和SVM的选择：</p>
 <ol>
-<li><p>如果Feature的数量很大，跟样本数量差不多，这时候选用LR或者是Linear Kernel的SVM</p>
-</li>
-<li><p>如果Feature的数量比较小，样本数量一般，不算大也不算小，选用SVM+Gaussian Kernel</p>
-</li>
-<li><p>如果Feature的数量比较小，而样本数量很多，需要手工添加一些feature变成第一种情况</p>
-</li>
+<li>如果Feature的数量很大，跟样本数量差不多，这时候选用LR或者是Linear Kernel的SVM</li>
+<li>如果Feature的数量比较小，样本数量一般，不算大也不算小，选用SVM+Gaussian Kernel</li>
+<li>如果Feature的数量比较小，而样本数量很多，需要手工添加一些feature变成第一种情况</li>
 </ol>
 <ul>
 <li>从图模型角度看LR</li>
