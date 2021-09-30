@@ -23,8 +23,11 @@
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_3.6.png">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_3.7.png">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_3.8.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_3.9.png">
+<meta property="og:image" content="https://yishishizi.github.io/2021/09/images/ML_3.10.png">
+<meta property="og:image" content="https://yishishizi.github.io/2021/09/images/ML3.11.png">
 <meta property="article:published_time" content="2021-09-28T06:54:08.000Z">
-<meta property="article:modified_time" content="2021-09-29T14:31:27.533Z">
+<meta property="article:modified_time" content="2021-09-30T03:25:39.109Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yishishizi.github.io/images/ML_3.1.png">
@@ -215,6 +218,35 @@
 <p><img src="/images/ML_3.6.png"></p>
 <h3 id="SMO原理小结"><a href="#SMO原理小结" class="headerlink" title="SMO原理小结"></a>SMO原理小结</h3><p><img src="/images/ML_3.7.png"></p>
 <p><img src="/images/ML_3.8.png"></p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>我们遇到线性不可分的样例时，常用做法是把样例特征映射到高维空间中去(如上一节的多项式回归）但是遇到线性不可分的样例，一律映射到高维空间，那么这个维度大小是会高到令人恐怖的。此时，核函数就体现出它的价值了，核函数的价值在于它虽然也是将特征进行从低维到高维的转换，但核函数好在它在低维上进行计算，而将实质上的分类效果（利用了内积）表现在了高维上，这样避免了直接在高维空间中的复杂计算，真正解决了SVM线性不可分的问题。</p>
+<p>核函数都是正定核函数。一个函数要想成为正定核函数，必须满足他里面任何点的集合形成的Gram矩阵是半正定的。</p>
+<p>常用的核函数</p>
+<p><img src="/images/ML_3.9.png"></p>
+<p><img src="../../images/ML_3.10.png"></p>
+<h2 id="SVM回归模型"><a href="#SVM回归模型" class="headerlink" title="SVM回归模型"></a>SVM回归模型</h2><p><img src="../../images/ML3.11.png"></p>
+<h2 id="SVM优缺点"><a href="#SVM优缺点" class="headerlink" title="SVM优缺点"></a>SVM优缺点</h2><p>SVM算法的主要优点有：</p>
+<ol>
+<li><p>解决高维特征的分类问题和回归问题很有效,在特征维度大于样本数时依然有很好的效果。</p>
+</li>
+<li><p>仅仅使用一部分支持向量来做超平面的决策，无需依赖全部数据。</p>
+</li>
+<li><p>有大量的核函数可以使用，从而可以很灵活的来解决各种非线性的分类回归问题。</p>
+</li>
+<li><p>样本量不是海量数据的时候，分类准确率高，泛化能力强。</p>
+</li>
+</ol>
+<p>SVM算法的主要缺点有：</p>
+<ol>
+<li><p>如果特征维度远远大于样本数，则SVM表现一般。</p>
+</li>
+<li><p>SVM在样本量非常大，核函数映射维度非常高时，计算量过大，不太适合使用。</p>
+</li>
+<li><p>非线性问题的核函数的选择没有通用标准，难以选择一个合适的核函数。</p>
+</li>
+<li><p>SVM对缺失数据敏感。</p>
+</li>
+</ol>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6113120.html">https://www.cnblogs.com/pinard/p/6113120.html</a></p>
 
       
 
@@ -342,7 +374,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94%E4%B8%8E%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94"><span class="toc-number">1.</span> <span class="toc-text">函数间隔与几何间隔</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94%EF%BC%88%E8%A1%A8%E7%A4%BA%E5%88%86%E7%B1%BB%E9%A2%84%E6%B5%8B%E7%9A%84%E7%A1%AE%E4%BF%A1%E7%A8%8B%E5%BA%A6%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">函数间隔（表示分类预测的确信程度）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94%EF%BC%88%E5%AE%9E%E4%BE%8B%E7%82%B9%E5%88%B0%E8%B6%85%E5%B9%B3%E9%9D%A2%E7%9A%84%E5%B8%A6%E7%AC%A6%E5%8F%B7%E7%9A%84%E8%B7%9D%E7%A6%BB%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">几何间隔（实例点到超平面的带符号的距离）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%B4%E9%9A%94%E6%9C%80%E5%A4%A7%E5%8C%96%EF%BC%88%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%86%E7%A6%BB%E8%B6%85%E5%B9%B3%E9%9D%A2%E6%98%AF%E5%94%AF%E4%B8%80%E7%9A%84%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">间隔最大化（几何间隔的最大分离超平面是唯一的）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E9%97%B4%E9%9A%94"><span class="toc-number">2.2.</span> <span class="toc-text">硬间隔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E9%97%B4%E9%9A%94"><span class="toc-number">2.3.</span> <span class="toc-text">软间隔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SMO%E5%8E%9F%E7%90%86%E5%B0%8F%E7%BB%93"><span class="toc-number">2.4.</span> <span class="toc-text">SMO原理小结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94%E4%B8%8E%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94"><span class="toc-number">1.</span> <span class="toc-text">函数间隔与几何间隔</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94%EF%BC%88%E8%A1%A8%E7%A4%BA%E5%88%86%E7%B1%BB%E9%A2%84%E6%B5%8B%E7%9A%84%E7%A1%AE%E4%BF%A1%E7%A8%8B%E5%BA%A6%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">函数间隔（表示分类预测的确信程度）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94%EF%BC%88%E5%AE%9E%E4%BE%8B%E7%82%B9%E5%88%B0%E8%B6%85%E5%B9%B3%E9%9D%A2%E7%9A%84%E5%B8%A6%E7%AC%A6%E5%8F%B7%E7%9A%84%E8%B7%9D%E7%A6%BB%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">几何间隔（实例点到超平面的带符号的距离）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%B4%E9%9A%94%E6%9C%80%E5%A4%A7%E5%8C%96%EF%BC%88%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%86%E7%A6%BB%E8%B6%85%E5%B9%B3%E9%9D%A2%E6%98%AF%E5%94%AF%E4%B8%80%E7%9A%84%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">间隔最大化（几何间隔的最大分离超平面是唯一的）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E9%97%B4%E9%9A%94"><span class="toc-number">2.2.</span> <span class="toc-text">硬间隔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E9%97%B4%E9%9A%94"><span class="toc-number">2.3.</span> <span class="toc-text">软间隔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SMO%E5%8E%9F%E7%90%86%E5%B0%8F%E7%BB%93"><span class="toc-number">2.4.</span> <span class="toc-text">SMO原理小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">3.</span> <span class="toc-text">其它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">SVM回归模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">SVM优缺点</span></a></li></ol>
                     </div>
                 </span>
             </div>
