@@ -8,15 +8,24 @@
   <link rel="dns-prefetch" href="https://yishishizi.github.io">
   <title>ML-梯度提升树GBDT | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="GBDT是boosting算法中的一种，按照boosting的思想，在GBDT算法的每一步，用一颗决策树去拟合当前学习器的残差，获得一个新的弱学习器。将每一步的决策树组合起来形成一个强学习器。 提升方法采用加法模型与前向分布算法，以决策树为基函数的提升方法称为提升树。GBDT使用前向分布算法，弱学习器限定只能使用CART回归树模型。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ML-梯度提升树GBDT">
 <meta property="og:url" content="https://yishishizi.github.io/2021/10/06/ML-%E6%A2%AF%E5%BA%A6%E6%8F%90%E5%8D%87%E6%A0%91GBDT/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="GBDT是boosting算法中的一种，按照boosting的思想，在GBDT算法的每一步，用一颗决策树去拟合当前学习器的残差，获得一个新的弱学习器。将每一步的决策树组合起来形成一个强学习器。 提升方法采用加法模型与前向分布算法，以决策树为基函数的提升方法称为提升树。GBDT使用前向分布算法，弱学习器限定只能使用CART回归树模型。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_7.1.JPG">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_7.1.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_7.2.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_7.3.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_7.4.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_7.5.png">
 <meta property="article:published_time" content="2021-10-06T08:54:17.000Z">
-<meta property="article:modified_time" content="2021-10-06T08:54:17.725Z">
+<meta property="article:modified_time" content="2021-10-06T14:15:49.252Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yishishizi.github.io/images/ML_7.1.JPG">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -190,7 +199,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>GBDT是boosting算法中的一种，按照boosting的思想，在GBDT算法的每一步，用一颗决策树去拟合当前学习器的残差，获得一个新的弱学习器。将每一步的决策树组合起来形成一个强学习器。</p>
+<p>提升方法采用加法模型与前向分布算法，以决策树为基函数的提升方法称为提升树。GBDT使用前向分布算法，弱学习器限定只能使用CART回归树模型。</p>
+<span id="more"></span>
+<p>GBDT与传统的Boosting区别较大，它的每一次计算都是为了减少上一次的残差。为了消除残差，我们可以在残差减小的梯度方向建立模型。所以说，GBDT中每个新的模型的建立都是为了使得<br>之前的模型的残差往梯度下降的方向拟合。利用损失函数的负梯度方向在当前模型的值作为残差的近似值，从而拟合一颗回归树。<br><img src="/images/ML_7.1.JPG"><br>GBDT的思想可以用一个通俗的例子解释，假如有个人30岁，我们首先用20岁去拟合，发现损失有10岁，这时我们用6岁去拟合剩下的损失，发现差距还有4岁，第三轮我们用3岁拟合剩下的差距，差距就只有一岁了。如果我们的迭代轮数还没有完，可以继续迭代下面，每一轮迭代，拟合的岁数误差都会减小。</p>
+<h2 id="GBDT模型"><a href="#GBDT模型" class="headerlink" title="GBDT模型"></a>GBDT模型</h2><p><img src="/images/ML_7.1.png"></p>
+<p>通过损失函数的负梯度来拟合，我们找到了一种通用的拟合损失误差的办法，这样无轮是分类问题还是回归问题，我们通过其损失函数的负梯度的拟合，就可以用GBDT来解决我们的分类回归问题。区别仅仅在于损失函数不同导致的负梯度不同而已。</p>
+<h2 id="GBDT回归算法"><a href="#GBDT回归算法" class="headerlink" title="GBDT回归算法"></a>GBDT回归算法</h2><p><img src="/images/ML_7.2.png"></p>
+<h2 id="GBDT分类算法"><a href="#GBDT分类算法" class="headerlink" title="GBDT分类算法"></a>GBDT分类算法</h2><p><img src="/images/ML_7.3.png"></p>
+<p><img src="/images/ML_7.4.png"></p>
+<h2 id="损失函数的负梯度"><a href="#损失函数的负梯度" class="headerlink" title="损失函数的负梯度"></a>损失函数的负梯度</h2><p><img src="/images/ML_7.5.png"></p>
+
       
 
       
@@ -317,7 +336,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GBDT%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">GBDT模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GBDT%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">GBDT回归算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GBDT%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">GBDT分类算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E8%B4%9F%E6%A2%AF%E5%BA%A6"><span class="toc-number">4.</span> <span class="toc-text">损失函数的负梯度</span></a></li></ol>
                     </div>
                 </span>
             </div>
