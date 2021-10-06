@@ -8,17 +8,19 @@
   <link rel="dns-prefetch" href="https://yishishizi.github.io">
   <title>ML-RF小结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="随机森林（RF）">
+  <meta name="description" content="随机森林（RF） 随机森林是Bagging的一个扩展变体，盯在以决策树为基学习器构建 Bagging 集成的基础上，进一步在决策树的训练过程中引入了随机属性选择。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ML-RF小结">
 <meta property="og:url" content="https://yishishizi.github.io/2021/10/05/ML-RF%E5%B0%8F%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="随机森林（RF）">
+<meta property="og:description" content="随机森林（RF） 随机森林是Bagging的一个扩展变体，盯在以决策树为基学习器构建 Bagging 集成的基础上，进一步在决策树的训练过程中引入了随机属性选择。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_5.1.png">
 <meta property="article:published_time" content="2021-10-05T08:43:51.000Z">
-<meta property="article:modified_time" content="2021-10-05T09:21:30.738Z">
+<meta property="article:modified_time" content="2021-10-06T07:38:23.750Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yishishizi.github.io/images/ML_5.1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -193,7 +195,37 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>随机森林（RF）</p>
+<p>随机森林是Bagging的一个扩展变体，盯在以决策树为基学习器构建 Bagging 集成的基础上，进一步在决策树的训练过程中引入了随机属性选择。</p>
 <span id="more"></span>
+<h2 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h2><p>1、偏差：度量模型的期望预测与真实结果的偏离程度，刻画了模型本身的拟合能力。</p>
+<p>2、方差：度量了同样大小的训练集的变动导致学习能力的下降，刻画了数据扰动所造成的影响。</p>
+<p>3、噪声：表达了当前任务上任何模型所能达到的期望泛化误差的下界，刻画了学习问题本身的难度。</p>
+<p>欠拟合：偏差主导泛化误差</p>
+<p>过拟合：方差主导泛化误差</p>
+<p>Boosting侧重降低偏差，Bagging侧重降低方差。随机森林的主要作用是降低方差，降低模型的复杂度。</p>
+<h2 id="随机森林模型建立步骤"><a href="#随机森林模型建立步骤" class="headerlink" title="随机森林模型建立步骤"></a>随机森林模型建立步骤</h2><p>（1）对原始数据集进行可放回随机抽样成K组子数据集；</p>
+<p>（2）从样本的N个特征随机抽样m个特征；</p>
+<p>（3）对每个子数据集构建最优学习模型</p>
+<p>（4）对于新的输入数据，根据K个最优学习模型，得到最终结果，对于分类任务，随机森林是多数表决。对于回归任务，随机森林是简单平均。</p>
+<p><img src="/images/ML_5.1.png"></p>
+<p>1、对训练集进行有放回地随机抽样。（求同存异）</p>
+<p>1） 如果不进行随机抽样，每棵树的训练集都一样，那么最终训练出的树分类结果也是完全一样的，这样的话完全没有bagging的必要。（每颗决策树只有同，没有异）</p>
+<p>2） 如果不是有放回的抽样，那么每棵树的训练样本都是不同的，都是没有交集的，（随机森林中的每颗决策树只有异，没有同）<br>这样每棵树都是”有偏的”，都是绝对”片面的”，也就是说每棵树训练出来都是有很大的差异的；而随机森林最后分类取决于多棵树（弱分类器）的投票表决，这种表决应该是”求同”，因此使用完全不同的训练集来训练每棵树这样对最终分类结果是没有帮助的，这样无异于是”盲人摸象”。</p>
+<p>2、每次构建决策树时，对特征进行随机抽取。推荐值k=log2d</p>
+<p>使子数据集间有不同的子特征，我们把不同的特征代表不同的领域，从而在不同领域构建不同模型，得到比较全面的结果。</p>
+<h2 id="相关性"><a href="#相关性" class="headerlink" title="相关性"></a>相关性</h2><p>随机森林的相关性包括子数据集间的相关性和子数据集间特征的相关性。相关性在这里可以理解成相似度，若子数据集间重复的样本或子数据集间重复的特征越多，则相关性越大。</p>
+<p>随机森林分类效果（错误率）与两个因素有关：</p>
+<p>1、森林中任意两棵树的相关性：相关性越大，错误率越大；</p>
+<p>2、森林中每棵树的分类能力：每棵树的分类能力越强，整个森林的错误率越低。</p>
+<p>减小特征选择个数m，树的相关性和分类能力也会相应的降低；增大m，两者也会随之增大。所以关键问题是如何选择最优的m（或者是范围），这也是随机森林唯一的一个参数。</p>
+<h2 id="模型评估方法"><a href="#模型评估方法" class="headerlink" title="模型评估方法"></a>模型评估方法</h2><p>随机森林的论文中证明了袋外数据(OOB)误差估计是一种可以取代测试集的误差估计方法，即袋外数据误差是测试数据集误差的无偏估计，因此可以用OOB数据用来检测模型的泛化能力。</p>
+<p>1、袋外数据误差估计模型</p>
+<p>2、交叉验证率估计模型</p>
+<p>参考链接：</p>
+<pre><code>https://blog.csdn.net/yangyin007/article/details/82385967
+https://www.sohu.com/a/279136744_163476
+</code></pre>
+
       
 
       
@@ -329,7 +361,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="toc-number">1.</span> <span class="toc-text">偏差与方差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">随机森林模型建立步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">相关性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">模型评估方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
