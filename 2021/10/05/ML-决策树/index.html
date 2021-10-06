@@ -15,6 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="决策树 决策树（Decision Tree）是一种简单但是广泛使用的分类器。通过训练数据构建决策树，可以高效的对未知的数据进行分类。决策树的损失函数通常是正则化的极大似然函数决策数有两大优点：1）决策树模型可以读性好，具有描述性，有助于人工分析；2）效率高，决策树只需要一次构建，反复使用，每一次预测的最大计算次数不超过决策树的深度。决策树的生成算法有ID3、C4.5和CART三种算法。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.1.JPG">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_4.1.png">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_4.2.png">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_4.3.png">
@@ -29,10 +30,10 @@
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_4.12.png">
 <meta property="og:image" content="https://yishishizi.github.io/images/ML_4.13.png">
 <meta property="article:published_time" content="2021-10-05T09:06:03.000Z">
-<meta property="article:modified_time" content="2021-10-06T06:52:43.510Z">
+<meta property="article:modified_time" content="2021-10-06T08:02:46.137Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yishishizi.github.io/images/ML_4.1.png">
+<meta name="twitter:image" content="https://yishishizi.github.io/images/ML_4.1.JPG">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -79,7 +80,7 @@
 	        
 			</ul>
 		</nav>
-			总文章数 17
+			总文章数 19
 		<nav class="header-smart-menu">
     		
     			
@@ -222,6 +223,7 @@
 <p>需要注意的是，增益率准则对可取值数目较少的属性有所偏好。因此，C4.5算法并不是直接选择增益率最大的候选划分属性。而是使用了一个启发式先从候选划分属性中找出信息增益高于平均水平的属性，再从<br>中选择增益率最高的。</p>
 <p>3、基尼系数</p>
 <p>基尼值反映了从数据集D中随机抽取两个样本，其类别标记不一致的概率。因此，其值越小，数据集的纯度越高。<br>我们在候选属性集合A中，选择那个使得划分后基尼指数最小的属性作为最优划分属性。</p>
+<p><img src="/images/ML_4.1.JPG"></p>
 <h2 id="生成算法"><a href="#生成算法" class="headerlink" title="生成算法"></a>生成算法</h2><p>1、ID3算法</p>
 <p><img src="/images/ML_4.1.png"></p>
 <p>2、C4.5算法</p>
@@ -380,6 +382,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/10/06/ML-AdaBoost%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ML-AdaBoost算法
+        
+      </div>
+    </a>
   
   
     <a href="/2021/10/05/ML-RF%E5%B0%8F%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
