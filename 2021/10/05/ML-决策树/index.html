@@ -6,19 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yishishizi.github.io">
-  <title>Hello World | Hexo</title>
+  <title>ML-决策树 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="决策树 决策树（Decision Tree）是一种简单但是广泛使用的分类器。通过训练数据构建决策树，可以高效的对未知的数据进行分类。决策树的损失函数通常是正则化的极大似然函数决策数有两大优点：1）决策树模型可以读性好，具有描述性，有助于人工分析；2）效率高，决策树只需要一次构建，反复使用，每一次预测的最大计算次数不超过决策树的深度。决策树的生成算法有ID3、C4.5和CART三种算法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://yishishizi.github.io/2021/07/10/hello-world/index.html">
+<meta property="og:title" content="ML-决策树">
+<meta property="og:url" content="https://yishishizi.github.io/2021/10/05/ML-%E5%86%B3%E7%AD%96%E6%A0%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="决策树 决策树（Decision Tree）是一种简单但是广泛使用的分类器。通过训练数据构建决策树，可以高效的对未知的数据进行分类。决策树的损失函数通常是正则化的极大似然函数决策数有两大优点：1）决策树模型可以读性好，具有描述性，有助于人工分析；2）效率高，决策树只需要一次构建，反复使用，每一次预测的最大计算次数不超过决策树的深度。决策树的生成算法有ID3、C4.5和CART三种算法。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-10T07:17:05.695Z">
-<meta property="article:modified_time" content="2021-07-10T12:25:34.234Z">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.1.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.2.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.3.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.4.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.5.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.6.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.7.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.8.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.9.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.10.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.11.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.12.png">
+<meta property="og:image" content="https://yishishizi.github.io/images/ML_4.13.png">
+<meta property="article:published_time" content="2021-10-05T09:06:03.000Z">
+<meta property="article:modified_time" content="2021-10-06T06:52:43.510Z">
 <meta property="article:author" content="yishishizi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yishishizi.github.io/images/ML_4.1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -166,14 +180,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-ML-决策树" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      ML-决策树
     </h1>
   
 
@@ -184,28 +198,91 @@
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
 	</span>
 
-<a href="/2021/07/10/hello-world/" class="archive-article-date">
-  	<time datetime="2021-07-10T07:17:05.695Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-10</time>
+<a href="/2021/10/05/ML-%E5%86%B3%E7%AD%96%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2021-10-05T09:06:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <p>决策树</p>
+<p>决策树（Decision Tree）是一种简单但是广泛使用的分类器。通过训练数据构建决策树，可以高效的对未知的数据进行分类。<br>决策树的损失函数通常是正则化的极大似然函数决策数有两大优点：1）决策树模型可以读性好，具有描述性，有助于人工分析；2）效率高，决策树只需要一次构建，反复使用，每一次预测的最大计算次数不超过决策树的深度。<br>决策树的生成算法有ID3、C4.5和CART三种算法。</p>
 <span id="more"></span>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>以信息熵为度量，构造一颗熵值下降最快且树高度最矮的决策树模型。</p>
+<p>决策树学习的目标：根据给定的训练数据集构建一个决策树模型，使它能够对实例进行正确的分类。</p>
+<p>决策树学习的本质：从训练集中归纳出一组分类规则，或者说是由训练数据集估计条件概率模型。</p>
+<p>决策树学习的损失函数：正则化的极大似然函数</p>
+<p>决策树学习的测试：最小化损失函数</p>
+<p>决策树学习的目标：在损失函数的意义下，选择最优决策树的问题。</p>
+<h2 id="节点划分准则"><a href="#节点划分准则" class="headerlink" title="节点划分准则"></a>节点划分准则</h2><p>1、信息增益</p>
+<p>对于训练数据集D，计算其每个特征的信息增益，并比较它们的大小，选择信息增益最大的特征。</p>
+<p>2、信息增益比</p>
+<p>以信息增益作为划分训练集的特征，存在偏向于选择取值较多的特征的问题。</p>
+<p>需要注意的是，增益率准则对可取值数目较少的属性有所偏好。因此，C4.5算法并不是直接选择增益率最大的候选划分属性。而是使用了一个启发式先从候选划分属性中找出信息增益高于平均水平的属性，再从<br>中选择增益率最高的。</p>
+<p>3、基尼系数</p>
+<p>基尼值反映了从数据集D中随机抽取两个样本，其类别标记不一致的概率。因此，其值越小，数据集的纯度越高。<br>我们在候选属性集合A中，选择那个使得划分后基尼指数最小的属性作为最优划分属性。</p>
+<h2 id="生成算法"><a href="#生成算法" class="headerlink" title="生成算法"></a>生成算法</h2><p>1、ID3算法</p>
+<p><img src="/images/ML_4.1.png"></p>
+<p>2、C4.5算法</p>
+<p>C4.5算法对ID3算法进行了改进，用信息增益比来选择特征。ID3算法只能处理离散属性，C4.5采用信息增益率作为分裂准则，采用二分法对连续属性进行处理。</p>
+<h2 id="决策树的损失函数"><a href="#决策树的损失函数" class="headerlink" title="决策树的损失函数"></a>决策树的损失函数</h2><p><img src="/images/ML_4.2.png"></p>
+<p><img src="/images/ML_4.3.png"></p>
+<h2 id="决策树的剪枝"><a href="#决策树的剪枝" class="headerlink" title="决策树的剪枝"></a>决策树的剪枝</h2><p>1、预剪枝</p>
+<p>(1)  一种最为简单的方法就是在决策树到达一定高度的情况下就停止树的生长。</p>
+<p>(2)  到达此结点的实例具有相同的特征向量，而不必一定属于同一类， 也可停止生长。</p>
+<p>(3)  到达此结点的实例个数小于某一个阈值也可停止树的生长。</p>
+<p>(4)  还有一种更为普遍的做法是计算每次扩张对系统性能的增益，如果这个增益值小于某个阈值则不进行扩展。</p>
+<p>2、后剪枝(参考链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yonghao/p/5064996.html">https://www.cnblogs.com/yonghao/p/5064996.html</a>)</p>
+<p>(1) REP-错误率降低剪枝</p>
+<p>该剪枝方法是根据错误率进行剪枝，如果一棵子树修剪前后错误率没有下降，就可以认为该子树是可以修剪的。<br>REP剪枝需要用新的数据集，原因是如果用旧的数据集，不可能出现分裂后的错误率比分裂前错误率要高的情况。由于使用新的数据集没有参与决策树的构建，能够降低训练数据的影响，降低过拟合的程度，提高预测的准确率。</p>
+<p>(2) PEP-悲观剪枝法</p>
+<p>悲观剪枝认为如果决策树的精度在剪枝前后没有影响的话，则进行剪枝。怎样才算是没有影响？如果剪枝后的误差小于剪枝前经度的上限，则说明剪枝后的效果与剪枝前的效果一致，此时要进行剪枝。</p>
+<p><img src="/images/ML_4.4.png"></p>
+<p><img src="/images/ML_4.5.png"></p>
+<p>(3) CCP-代价复杂度剪枝</p>
+<p>代价复杂度选择节点表面误差率增益值最小的非叶子节点，删除该非叶子节点的左右子节点，若有多个非叶子节点的表面误差率增益值相同小，则选择非叶子节点中子节点数最多的非叶子节点进行剪枝。</p>
+<p><img src="/images/ML_4.6.png"></p>
+<p><img src="/images/ML_4.7.png"></p>
+<p>实际上这个g(t)表示剪枝的阈值，即对于某一结点a，当总体损失函数中的参数alpha = g(t)时，剪和不剪总体损失函数是一样的（这可以在书中（5.27）和（5.28）联立得到）。<br>这时如果alpha稍稍增大，那么不剪的整体损失函数就大于剪去的。即alpha大于g(t)该剪，剪了会使整体损失函数减小；alpha小于g(t)不该剪，剪了会使整体损失函数增大。<br>（请注意上文中的总体损失函数，对象可以是以a为根的子树，也可以是整个CART树，对a剪枝前后二者的总体损失函数增减是相同的。）对于同一棵树的结点，alpha都是一样的，<br>当alpha从0开始缓慢增大，总会有某棵子树该剪，其他子树不该剪的情况，即alpha超过了某个结点的g(t)，但还没有超过其他结点的g(t)。这样随着alpha不断增大，不断地剪枝，就<br>得到了n+1棵子树，接下来只要用独立数据集测试这n+1棵子树，试试哪棵子树的误差最小就知道那棵是最好的方案了。</p>
+<p>（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhengzhenxian/article/details/79083643%EF%BC%89">https://blog.csdn.net/zhengzhenxian/article/details/79083643）</a></p>
+<h2 id="连续值与缺失值"><a href="#连续值与缺失值" class="headerlink" title="连续值与缺失值"></a>连续值与缺失值</h2><h3 id="连续值"><a href="#连续值" class="headerlink" title="连续值"></a>连续值</h3><p>（参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/79396893%EF%BC%89">https://blog.csdn.net/u012328159/article/details/79396893）</a></p>
+<p>由于连续属性的可取值数目不再有限， 因此，不能直接根据连续属性的可取值来对结点进行划分.此时连续属性离散化技术可派上用场 . 最简单的策<br>略是采用 二分法(bi-partition)对连续属性进行处理，这正是 C4.5决策树算法中采用的机制。需注意的是，与离散属性不同，若当前结点划分属性为连续属性?该属性还<br>可作为其后代结点的划分属性。</p>
+<p><img src="/images/ML_4.8.png"></p>
+<h3 id="缺失值"><a href="#缺失值" class="headerlink" title="缺失值"></a>缺失值</h3><p>（参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/79413610%EF%BC%89">https://blog.csdn.net/u012328159/article/details/79413610）</a></p>
+<p>在决策树中处理含有缺失值的样本的时候，需要解决两个问题：</p>
+<p>1） 如何在属性值缺失的情况下进行划分属性的选择？（比如“色泽”这个属性有的样本在该属性上的值是缺失的，那么该如何计算“色泽”的信息增益？）</p>
+<p>2） 给定划分属性，若样本在该属性上的值是缺失的，那么该如何对这个样本进行划分？（即到底把这个样本划分到哪个结点里？）</p>
+<p><img src="/images/ML_4.9.png"></p>
+<p>决策树处理缺失值时，先计算无缺失样本的信息增益，选取信息增益最大的特征为划分节点，赋予正常样本的权值为1，赋予缺失样本的权值为N/N1,N为叶子节点中无缺失样本的数目，<br>N1为无缺失样本在该特征值上的样本数。</p>
+<p>如果测试样本属性也有缺失值，C4.5中采用的方法是：测试样本在该属性值上有缺失值，那么就同时探查（计算）所有分支，然后算每个类别的概率，取概率最大的类别赋值给该样本。</p>
+<h2 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h2><p>CART算法中决策树的生成就是递归地构建二叉决策树的过程，对回归树用平方误差最小化准则，对分类数用基尼系数最小化准则进行特征选择。</p>
+<h3 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h3><p>取划分空间内y的平均值作为叶子节点的输出值。<br><img src="/images/ML_4.10.png"></p>
+<p><img src="/images/ML_4.11.png"></p>
+<h3 id="分类树"><a href="#分类树" class="headerlink" title="分类树"></a>分类树</h3><p>1、选用基尼系数作为划分准则的原因：</p>
+<p>1） 在二分类过程中，基尼系数和熵之半的曲线很接近，都可以近似地代表分类误差率。<br>2） 使用基尼系数，计算量小。</p>
+<p>2、对连续值和离散值的处理</p>
+<p>1）  CART分类树算法对连续值的处理，思想和C4.5相同，都是将连续的特征离散化。唯一区别在选择划分点时，C4.5是信息增益比，CART是基尼系数。</p>
+<p>2）  CART分类树算法对离散值的处理，采用的思路：不停的二分离散特征。</p>
+<p><img src="/images/ML_4.12.png"></p>
+<p><img src="/images/ML_4.13.png"></p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>优点：</p>
+<pre><code>简单直观，生成的决策树很直观。 
+基本不需要预处理，不需要提前归一化和处理缺失值。 
+使用决策树预测的代价是O(log2m)。m为样本数。 
+既可以处理离散值也可以处理连续值。很多算法只是专注于离散值或者连续值。 
+可以处理多维度输出的分类问题。 
+相比于神经网络之类的黑盒分类模型，决策树在逻辑上可以很好解释。 
+可以交叉验证的剪枝来选择模型，从而提高泛化能力。 
+对于异常点的容错能力好，健壮性高。 
+</code></pre>
+<p>缺点：</p>
+<pre><code>决策树算法非常容易过拟合，导致泛化能力不强。可以通过设置节点最少样本数量和限制决策树深度来改进。 
+决策树会因为样本发生一点的改动，导致树结构的剧烈改变。这个可以通过集成学习之类的方法解决。  
+寻找最优的决策树是一个NP难题，我们一般是通过启发式方法，容易陷入局部最优。可以通过集成学习的方法来改善。 
+有些比较复杂的关系，决策树很难学习，比如异或。这个就没有办法了，一般这种关系可以换神经网络分类方法来解决。 
+如果某些特征的样本比例过大，生成决策树容易偏向于这些特征。这个可以通过调节样本权重来改善。
+</code></pre>
 
       
 
@@ -290,7 +367,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yishishizi.github.ioithub.io/2021/07/10/hello-world/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yishishizi.github.ioithub.io/2021/10/05/ML-%E5%86%B3%E7%AD%96%E6%A0%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,15 +381,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/07/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          我的博客搭建历程
-        
-      </div>
-    </a>
   
+    <a href="/2021/10/05/ML-RF%E5%B0%8F%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ML-RF小结</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -337,7 +410,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%88%92%E5%88%86%E5%87%86%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">节点划分准则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">生成算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">决策树的损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91%E7%9A%84%E5%89%AA%E6%9E%9D"><span class="toc-number">4.</span> <span class="toc-text">决策树的剪枝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%80%BC%E4%B8%8E%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="toc-number">5.</span> <span class="toc-text">连续值与缺失值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%80%BC"><span class="toc-number">5.1.</span> <span class="toc-text">连续值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="toc-number">5.2.</span> <span class="toc-text">缺失值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CART%E7%AE%97%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">CART算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E6%A0%91"><span class="toc-number">6.1.</span> <span class="toc-text">回归树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E6%A0%91"><span class="toc-number">6.2.</span> <span class="toc-text">分类树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">7.</span> <span class="toc-text">优缺点</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -362,8 +435,8 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://yishishizi.github.io/2021/07/10/hello-world/",
-  //id: 'Sat Jul 10 2021 15:17:05 GMT+0800',
+  id: "https://yishishizi.github.io/2021/10/05/ML-%E5%86%B3%E7%AD%96%E6%A0%91/",
+  //id: 'Tue Oct 05 2021 17:06:03 GMT+0800',
   owner: '‘yishishizi’',
   repo: 'yishishizi.github.io',
   oauth: {
