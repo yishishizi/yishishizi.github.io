@@ -61,7 +61,7 @@
 	        
 			</ul>
 		</nav>
-			总文章数 19
+			总文章数 20
 		<nav class="header-smart-menu">
     		
     			
@@ -163,6 +163,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ML-XGBoost算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/07/ML-XGBoost%E7%AE%97%E6%B3%95/">ML-XGBoost算法</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/10/07/ML-XGBoost%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-10-07T00:58:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>XGBoost算法通过优化结构化损失函数（加入了正则项的损失函数，可以起到降低过拟合的风险）来实现弱学习器的生成，并且XGBoost算法没有采用搜索方法，而是直接利用了损失函数的一阶导数和二阶导数值，并通过预排序、加权分位数等技术来大大提高了算法的性能。</p>
+        
+          <a class="article-more-a" href="/2021/10/07/ML-XGBoost%E7%AE%97%E6%B3%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/07/ML-XGBoost%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ML-梯度提升树GBDT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -184,7 +250,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>GBDT是boosting算法中的一种，按照boosting的思想，在GBDT算法的每一步，用一颗决策树去拟合当前学习器的残差，获得一个新的弱学习器。将每一步的决策树组合起来形成一个强学习器。</p>
+        <p>GBDT是boosting算法中的一种，按照boosting的思想，在GBDT算法的每一步，用一颗决策树去拟合负梯度，获得一个新的弱学习器。将每一步的决策树组合起来形成一个强学习器。<br>GBDT是一种通过迭代选定的指向负梯度方向的函数（弱学习器）在函数空间对损失函数进行优化的算法。</p>
+<p>Boosting的基本要求是：随着迭代次数的增多，Loss只能递减（而不能又在某个点突然增大），boosting的目的是为了是损失函数最小化而不是更好的拟合训练数据。</p>
 <p>提升方法采用加法模型与前向分布算法，以决策树为基函数的提升方法称为提升树。GBDT使用前向分布算法，弱学习器限定只能使用CART回归树模型。</p>
         
           <a class="article-more-a" href="/2021/10/06/ML-%E6%A2%AF%E5%BA%A6%E6%8F%90%E5%8D%87%E6%A0%91GBDT/#more">more >></a>
@@ -736,72 +803,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/07/23/Django%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%B7%A5%E5%85%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/">Django介绍</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
-  	<time datetime="2021-07-19T02:48:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Django介绍</p>
-        
-          <a class="article-more-a" href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/19/Django%E4%BB%8B%E7%BB%8D/">展开全文 >></a>
         </p>
       
 
